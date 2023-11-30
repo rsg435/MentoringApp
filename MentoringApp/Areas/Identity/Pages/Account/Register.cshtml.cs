@@ -10,13 +10,17 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using MentoringApp.Data.Helpers;
 using MentoringApp.Data.Models;
+using MentoringApp.Repository;
+using MentoringApp.Repository.IRepository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
@@ -30,13 +34,15 @@ namespace MentoringApp.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<Student> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IUnitOfWork _unitOfWork;
 
         public RegisterModel(
             UserManager<Student> userManager,
             IUserStore<Student> userStore,
             SignInManager<Student> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +50,7 @@ namespace MentoringApp.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _unitOfWork = unitOfWork;
         }
 
         /// <summary>
@@ -71,6 +78,10 @@ namespace MentoringApp.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Full name")]
+            public string Name { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -98,6 +109,17 @@ namespace MentoringApp.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Course name")]
+            public string CourseName { get; set; }
+            public int UniversityId { get; set; }
+            public string AreaOfStudy { get; set; }
+            public UserRole UserRole { get; set; }
+            public IEnumerable<SelectListItem> UniversityList { get; set; }
+            public IEnumerable<SelectListItem> AreaOfStudyList { get; set; }
+            public IEnumerable<SelectListItem> RoleList { get; set; }
         }
 
 
@@ -105,6 +127,17 @@ namespace MentoringApp.Areas.Identity.Pages.Account
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+            Input = new()
+            {
+                UniversityList = _unitOfWork.University.GetAll().Select(x => x.Name).Select(i => new SelectListItem
+                {
+                    Text = i,
+                    Value = i
+                }),
+                AreaOfStudyList = SelectListItemHelper.GetAreaOfStudySelectList(),
+                RoleList = SelectListItemHelper.GetUserRoleList()
+            };
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -114,6 +147,12 @@ namespace MentoringApp.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+
+                user.Name = Input.Name;
+                user.CourseName = Input.CourseName;
+                user.AreaOfStudy = Input.AreaOfStudy;
+                user.Role = Input.UserRole;
+                user.UniversityId = Input.UniversityId;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

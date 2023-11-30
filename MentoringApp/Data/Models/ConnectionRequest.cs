@@ -11,14 +11,9 @@ namespace MentoringApp.Data.Models
         [Required]
         public Status Status { get; set; }
         public string? StudentId { get; set; }
-        [ForeignKey("StudentId")]
-
-        public Student? Student { get; set; }
+        public Student Student { get; set; }
         public string? MentorId { get; set; }
-        [ForeignKey("MentorId")]
-
-        public Mentor? Mentor { get; set; }
-
+        public Student Mentor { get; set; }
     }
     public enum Status
     {

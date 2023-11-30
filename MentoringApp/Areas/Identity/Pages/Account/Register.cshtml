@@ -12,6 +12,12 @@
             <h2>Create a new account.</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-floating">
+                <label asp-for="Input.Name"></label>
+                <input asp-for="Input.Name" class="form-control" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
             <div class="form-floating">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                 <label asp-for="Input.Email"></label>
@@ -27,6 +33,28 @@
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            <div class="form-floating">
+                <select asp-for="Input.UniversityId" style="display:none;" asp-items="@Model.Input.UniversityList" class=form-select>
+                    <option disabled selected>-Select your university-</option>
+                </select>
+            </div>
+            <div class="form-floating">
+                <label asp-for="Input.CourseName"></label>
+                <input asp-for="Input.CourseName" class="form-control" />
+                <span asp-validation-for="Input.CourseName" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <select asp-for="Input.AreaOfStudy" style="display:none;" asp-items="@Model.Input.AreaOfStudyList" class=form-select>
+                    <option disabled selected>-Select your area of study-</option>
+                </select>
+            </div>
+            <div class="form-floating">
+                <select asp-for="Input.UserRole" style="display:none;" asp-items="@Model.Input.RoleList" class=form-select>
+                    <option disabled selected>-Select if you wish to be a mentor or a mentee-</option>
+                </select>
+            </div>
+
+
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
     </div>

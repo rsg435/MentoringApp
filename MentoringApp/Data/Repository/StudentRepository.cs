@@ -12,7 +12,7 @@ namespace MentoringApp.Repository
             _context = context;
         }
 
-        public void AddMentor(Mentor obj)
+        public void AddMentor(Student obj)
         {
             throw new NotImplementedException();
         }
@@ -22,7 +22,7 @@ namespace MentoringApp.Repository
             throw new NotImplementedException();
         }
 
-        public Mentor GetMentor(int studentId)
+        public Student GetMentor(int studentId)
         {
             throw new NotImplementedException();
         }
