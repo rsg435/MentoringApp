@@ -11,9 +11,5 @@ namespace MentoringApp.Repository
         {
           _context = context;
         }
-        public void Update(University obj)
-        {
-            //_context.Universities.Update(obj);
-        }
     }
 }

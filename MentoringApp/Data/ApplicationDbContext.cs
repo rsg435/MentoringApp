@@ -12,7 +12,7 @@ namespace MentoringApp.Data
         }
 
         public DbSet<University> Universities { get; set; }
-        public DbSet<ConnectionRequest> ConnectionRequests { get; set; }
+        public DbSet<ConnectionRequest> Connections { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

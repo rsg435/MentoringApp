@@ -4,6 +4,7 @@
     { 
         IStudentRepository Student { get; }
         IUniversityRepository University { get; }
+        IConnectionRepository Connection { get; }
         void Save();
     }
 }

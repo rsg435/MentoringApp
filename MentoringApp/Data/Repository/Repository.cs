@@ -13,7 +13,6 @@ namespace MentoringApp.Repository
         {
           _context = context;
           this.dbSet = _context.Set<T>();
-            //_context.Students.Include(x => x.University).Include(x => x.UniversityId);
         }
         public void Add(T entity)
         {

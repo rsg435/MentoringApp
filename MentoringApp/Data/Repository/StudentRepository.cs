@@ -2,7 +2,6 @@
 using MentoringApp.Data.Models;
 using MentoringApp.Repository.IRepository;
 
-
 namespace MentoringApp.Repository
 {
     public class StudentRepository : Repository<Student>, IStudentRepository
@@ -12,9 +11,30 @@ namespace MentoringApp.Repository
         {
             _context = context;
         }
-        public void Update(Student obj)
+
+        public void AddMentor(Mentor obj)
         {
-            //_context.Students.Update(obj);
+            throw new NotImplementedException();
+        }
+
+        public void AddStudent(Student obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Mentor GetMentor(int studentId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetMentors(string city, string AreaOfStudy)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Student> GetStudents(int mentorId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
