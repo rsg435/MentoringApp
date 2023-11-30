@@ -128,16 +128,7 @@ namespace MentoringApp.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
-            Input = new()
-            {
-                UniversityList = _unitOfWork.University.GetAll().Select(x => x.Name).Select(i => new SelectListItem
-                {
-                    Text = i,
-                    Value = i
-                }),
-                AreaOfStudyList = SelectListItemHelper.GetAreaOfStudySelectList(),
-                RoleList = SelectListItemHelper.GetUserRoleList()
-            };
+            PopulateDropdowns();
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -191,7 +182,23 @@ namespace MentoringApp.Areas.Identity.Pages.Account
             }
 
             // If we got this far, something failed, redisplay form
+            PopulateDropdowns();
             return Page();
+            
+        }
+
+        private void PopulateDropdowns()
+        {
+            Input = new()
+            {
+                UniversityList = _unitOfWork.University.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                }),
+                AreaOfStudyList = SelectListItemHelper.GetAreaOfStudySelectList(),
+                //RoleList = SelectListItemHelper.GetUserRoleList()
+            };
         }
 
         private Student CreateUser()

@@ -17,6 +17,13 @@ builder.Services.AddDefaultIdentity<Student>(options => options.SignIn.RequireCo
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages()
+    .AddMvcOptions(options =>
+    {
+        options.MaxModelValidationErrors = 50;
+        options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(
+            _ => "The field is required.");
+    });
 
 var app = builder.Build();
 

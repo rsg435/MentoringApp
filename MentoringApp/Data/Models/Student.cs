@@ -8,30 +8,29 @@ namespace MentoringApp.Data.Models
 {
     public class Student : IdentityUser
     {
-        [Required]
+        [Required(ErrorMessage = "Name is required.")]
         [PersonalData]
         public string Name { get; set; }
 
-        [Required]
-        [DisplayName("Course Name")]
+        [Required(ErrorMessage = "Course name is required.")]
+        [DisplayName("Course name")]
         public string CourseName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please select an area of study.")]
         [DisplayName("Area of Study")]
         public string AreaOfStudy { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please select a university.")]
         public int UniversityId { get; set; }
 
         [Required]
         public University University { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please select a role.")]
+        [EnumDataType(typeof(UserRole))]
         public UserRole Role { get; set; }
 
         public string? MentorId { get; set; }
-
-        [Required]
         public Student? Mentor { get; set; }
         public List<Student>? Mentees { get; set; }
         public List<ConnectionRequest> SentConnectionRequests { get; set; } = new List<ConnectionRequest>();
