@@ -29,7 +29,7 @@ namespace MentoringApp.Data.Models
         [Required]
         public UserRole Role { get; set; }
 
-        public int? MentorId { get; set; }
+        public string? MentorId { get; set; }
 
         [Required]
         public Student? Mentor { get; set; }

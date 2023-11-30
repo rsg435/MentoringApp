@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MentoringApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<Student>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

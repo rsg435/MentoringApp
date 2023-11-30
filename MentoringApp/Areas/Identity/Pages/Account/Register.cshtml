@@ -34,7 +34,7 @@
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
             <div class="form-floating">
-                <select asp-for="Input.UniversityId" style="display:none;" asp-items="@Model.Input.UniversityList" class=form-select>
+                <select asp-for="Input.UniversityId" asp-items="@Model.Input.UniversityList" class=form-select>
                     <option disabled selected>-Select your university-</option>
                 </select>
             </div>
@@ -44,12 +44,12 @@
                 <span asp-validation-for="Input.CourseName" class="text-danger"></span>
             </div>
             <div class="form-floating">
-                <select asp-for="Input.AreaOfStudy" style="display:none;" asp-items="@Model.Input.AreaOfStudyList" class=form-select>
+                <select asp-for="Input.AreaOfStudy" asp-items="@Model.Input.AreaOfStudyList" class=form-select>
                     <option disabled selected>-Select your area of study-</option>
                 </select>
             </div>
             <div class="form-floating">
-                <select asp-for="Input.UserRole" style="display:none;" asp-items="@Model.Input.RoleList" class=form-select>
+                <select asp-for="Input.UserRole" asp-items="@Model.Input.RoleList" class=form-select>
                     <option disabled selected>-Select if you wish to be a mentor or a mentee-</option>
                 </select>
             </div>
@@ -58,7 +58,7 @@
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
     </div>
-    <div class="col-md-6 col-md-offset-2">
+    @* <div class="col-md-6 col-md-offset-2">
         <section>
             <h3>Use another service to register.</h3>
             <hr />
@@ -87,7 +87,7 @@
                 }
             }
         </section>
-    </div>
+    </div> *@
 </div>
 
 @section Scripts {
