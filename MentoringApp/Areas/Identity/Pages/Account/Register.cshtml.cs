@@ -80,7 +80,7 @@ namespace MentoringApp.Areas.Identity.Pages.Account
         {
             [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Full name")]
+            [Display(Name = "Full Name")]
             public string Name { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -114,12 +114,22 @@ namespace MentoringApp.Areas.Identity.Pages.Account
             [DataType(DataType.Text)]
             [Display(Name = "Course name")]
             public string CourseName { get; set; }
+
+            [Display(Name = "University")]
             public int UniversityId { get; set; }
+
+            [Display(Name = "Area of Study")]
             public string AreaOfStudy { get; set; }
+
+            [Display(Name = "Role")]
             public UserRole UserRole { get; set; }
             public IEnumerable<SelectListItem> UniversityList { get; set; }
             public IEnumerable<SelectListItem> AreaOfStudyList { get; set; }
             public IEnumerable<SelectListItem> RoleList { get; set; }
+
+            [Phone]
+            [Display(Name = "Phone number")]
+            public string PhoneNumber { get; set; }
         }
 
 
@@ -144,6 +154,7 @@ namespace MentoringApp.Areas.Identity.Pages.Account
                 user.AreaOfStudy = Input.AreaOfStudy;
                 user.Role = Input.UserRole;
                 user.UniversityId = Input.UniversityId;
+                user.PhoneNumber = Input.PhoneNumber;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
@@ -197,7 +208,6 @@ namespace MentoringApp.Areas.Identity.Pages.Account
                     Value = i.Id.ToString()
                 }),
                 AreaOfStudyList = SelectListItemHelper.GetAreaOfStudySelectList(),
-                //RoleList = SelectListItemHelper.GetUserRoleList()
             };
         }
 

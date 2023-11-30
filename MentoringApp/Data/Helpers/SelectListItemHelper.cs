@@ -21,15 +21,6 @@ namespace MentoringApp.Data.Helpers
 
             return areaOfStudyList;
         }
-
-        public static IEnumerable<SelectListItem> GetUserRoleList()
-        {
-            return Enum.GetValues(typeof(UserRole)).Cast<UserRole>().Select(v => new SelectListItem
-            {
-                Text = v.ToString(),
-                Value = ((int)v).ToString()
-            }).ToList();
-        }
     }
 
     
