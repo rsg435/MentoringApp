@@ -12,6 +12,8 @@ namespace MentoringApp.Data
         }
 
         public DbSet<University> Universities { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Mentor>Mentors { get; set; }
         public DbSet<ConnectionRequest> Connections { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
