@@ -23,9 +23,9 @@ namespace MentoringApp.Data.Models
         [ForeignKey("UniversityId")]
         [Required]
         public University University { get; set; }
-        public string MentorId { get; set; }
+        public string? MentorId { get; set; }
         [ForeignKey("MentorId")]
-        public Mentor Mentor { get; set; }
+        public Mentor? Mentor { get; set; }
         public List<ConnectionRequest> ConnectionRequests { get; set; }
 
     }
