@@ -9,6 +9,7 @@ namespace MentoringApp.Data.Models
     public class Student : IdentityUser
     {
         [Required]
+        [PersonalData]
         public string Name { get; set; }
 
         [Required]
