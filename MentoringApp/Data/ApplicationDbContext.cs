@@ -1,4 +1,5 @@
 ﻿using MentoringApp.Data.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -64,120 +65,193 @@ namespace MentoringApp.Data
                 }
                 );
 
+            var hasher = new PasswordHasher<Student>();
 
-            //modelBuilder.Entity<Student>().HasData(
-            //    new Student
-            //    {
-            //        //Id = 1,
-            //        FirstName = "Harry",
-            //        LastName = "Smith",
-            //        AreaOfStudy = AreaOfStudy.Technology,
-            //        CourseName = "MSc Computing",
-            //        UniversityId = 1
-            //    },
-            //    new Student
-            //    {
-            //        //Id = 2,
-            //        FirstName = "Shuying",
-            //        LastName = "Jiang",
-            //        AreaOfStudy = AreaOfStudy.Technology,
-            //        CourseName = "BSc Computer Science",
-            //        UniversityId = 1
-            //    },
-            //    new Student
-            //    {
-            //        //Id = 3,
-            //        FirstName = "Hakeem",
-            //        LastName = "Kae-Kazim",
-            //        AreaOfStudy = AreaOfStudy.Technology,
-            //        CourseName = "MSc Big Data Analytics",
-            //        UniversityId = 1
-            //    },
-            //    new Student
-            //    {
-            //        //Id = 4,
-            //        FirstName = "Priyanka",
-            //        LastName = "Chopra",
-            //        AreaOfStudy = AreaOfStudy.ArtsAndHumanities,
-            //        CourseName = "BA History",
-            //        UniversityId = 3
-            //    },
-            //    new Student
-            //    {
-            //        //Id = 5,
-            //        FirstName = "Robin",
-            //        LastName = "Hawthorn",
-            //        AreaOfStudy = AreaOfStudy.ArtsAndHumanities,
-            //        CourseName = "BA Politics",
-            //        UniversityId = 3
-            //    },
-            //    new Student
-            //    {
-            //        //Id = 6,
-            //        FirstName = "Jun",
-            //        LastName = "Matsumoto",
-            //        AreaOfStudy = AreaOfStudy.Business,
-            //        CourseName = "BSc Management Studies",
-            //        UniversityId = 2
-            //    },
-            //    new Student
-            //    {
-            //        //Id = 7,
-            //        FirstName = "Maria",
-            //        LastName = "Spiridakos",
-            //        AreaOfStudy = AreaOfStudy.Science,
-            //        CourseName = "BSc Zoology",
-            //        UniversityId = 2
-            //    }
-            //);
+            modelBuilder.Entity<Student>().HasData(
 
-            //modelBuilder.Entity<Mentor>().HasData(
-            //    new Mentor
-            //    {
-            //        //Id = 8,
-            //        FirstName = "Bruno",
-            //        LastName = "Silva",
-            //        AreaOfStudy = AreaOfStudy.Technology,
-            //        CourseName = "MSc Computing",
-            //        UniversityId = 1
-            //    },
-            //    new Mentor
-            //    {
-            //        //Id = 9,
-            //        FirstName = "Claire",
-            //        LastName = "Martin",
-            //        AreaOfStudy = AreaOfStudy.Technology,
-            //        CourseName = "BSc Computer Science for Games",
-            //        UniversityId = 1
-            //    },
-            //    new Mentor
-            //    {
-            //        //Id = 10,
-            //        FirstName = "Min-ho",
-            //        LastName = "Lee",
-            //        AreaOfStudy = AreaOfStudy.Technology,
-            //        CourseName = "BSc Artificial Intelligence",
-            //        UniversityId = 2
-            //    },
-            //    new Mentor
-            //    {
-            //        //Id = 11,
-            //        FirstName = "Olga",
-            //        LastName = "Nowak",
-            //        AreaOfStudy = AreaOfStudy.CreativeArts,
-            //        CourseName = "BA Printmaking",
-            //        UniversityId = 3
-            //    },
-            //    new Mentor
-            //    {
-            //        //Id = 12,
-            //        FirstName = "Qasim",
-            //        LastName = "Khan",
-            //        AreaOfStudy = AreaOfStudy.Business,
-            //        CourseName = "MSc Human Resources",
-            //        UniversityId = 2
-            //    }
-            //);
+               new Student
+               {
+                    Id = "1",
+                    UserName = "harry@example.com",
+                    Email = "harry@example.com",
+                    Name = "Harry Smith",
+                    CourseName = "MSc Computing",
+                    AreaOfStudy = AreaOfStudy.Technology,
+                    UniversityId = 1,
+                    Role = UserRole.Student,
+                    PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                    PhoneNumber = "1234567890"
+               },
+                new Student
+                {
+                    Id = "2",
+                    UserName = "jiang@example.com",
+                    Email = "jiang@example.com",
+                    Name = "Shuying Jiang",
+                    CourseName = "BSc Computer Science",
+                    AreaOfStudy = AreaOfStudy.Technology,
+                    UniversityId = 1,
+                    Role = UserRole.Student,
+                    PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                    PhoneNumber = "1234567890"
+                },
+                new Student
+                {
+                    Id = "3",
+                    UserName = "hakeem@example.com",
+                    Email = "hakeem@example.com",
+                    Name = "Hakeem Kae-Kazim",
+                    CourseName = "MSc Big Data Analytics",
+                    AreaOfStudy = AreaOfStudy.Technology,
+                    UniversityId = 1,
+                    Role = UserRole.Student,
+                    PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                    PhoneNumber = "1234567890"
+                },
+                new Student
+                {
+                    Id = "4",
+                    UserName = "priyanka@example.com",
+                    Email = "priyanka@example.com",
+                    Name = "Priyanka Chopra",
+                    CourseName = "BA History",
+                    AreaOfStudy = AreaOfStudy.ArtsAndHumanities,
+                    UniversityId = 3,
+                    Role = UserRole.Student,
+                    PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                    PhoneNumber = "1234567890"
+                },
+                new Student
+                {
+                    Id = "5",
+                    UserName = "robin@example.com",
+                    Email = "robin@example.com",
+                    Name = "Robin Hawthorn",
+                    CourseName = "BA Politics",
+                    AreaOfStudy = AreaOfStudy.ArtsAndHumanities,
+                    UniversityId = 3,
+                    Role = UserRole.Student,
+                    PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                    PhoneNumber = "1234567890"
+                },
+                new Student
+                {
+                    Id = "6",
+                    UserName = "jun@example.com",
+                    Email = "jun@example.com",
+                    Name = "Jun Matsumoto",
+                    CourseName = "BSc Management Studies",
+                    AreaOfStudy = AreaOfStudy.Business,
+                    UniversityId = 2,
+                    Role = UserRole.Student,
+                    PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                    PhoneNumber = "1234567890"
+                },
+                new Student
+                {
+                    Id = "7",
+                    UserName = "maria@example.com",
+                    Email = "maria@example.com",
+                    Name = "Maria Spiridakos",
+                    CourseName = "BSc Zoology",
+                    AreaOfStudy = AreaOfStudy.Science,
+                    UniversityId = 2,
+                    Role = UserRole.Student,
+                    PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                    PhoneNumber = "1234567890"
+                },
+                new Student
+                {
+                    Id = "8",
+                    UserName = "john@example.com",
+                    Email = "john@example.com",
+                    Name = "John Doe",
+                    CourseName = "MSc Business Analytics",
+                    AreaOfStudy = AreaOfStudy.Business,
+                    UniversityId = 1,
+                    Role = UserRole.Student,
+                    PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                    PhoneNumber = "1234567890"
+                },
+                new Student
+                {
+                    Id = "9",
+                    UserName = "emily@example.com",
+                    Email = "emily@example.com",
+                    Name = "Emily White",
+                    CourseName = "BSc Chemistry",
+                    AreaOfStudy = AreaOfStudy.Science,
+                    UniversityId = 2,
+                    Role = UserRole.Student,
+                    PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                    PhoneNumber = "1234567890"
+                },
+                 new Student
+                 {
+                     Id = "10",
+                     UserName = "bruno@example.com",
+                     Email = "bruno@example.com",
+                     Name = "Bruno Silva",
+                     CourseName = "MSc IT Management",
+                     AreaOfStudy = AreaOfStudy.Technology,
+                     UniversityId = 1,
+                     Role = UserRole.Mentor,
+                     PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                     PhoneNumber = "1234567890"
+                 },
+                 new Student
+                 {
+                     Id = "11",
+                     UserName = "claire@example.com",
+                     Email = "emily@example.com",
+                     Name = "Claire Martin",
+                     CourseName = "BSc Computer Science for Games",
+                     AreaOfStudy = AreaOfStudy.Technology,
+                     UniversityId = 1,
+                     Role = UserRole.Mentor,
+                     PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                     PhoneNumber = "1234567890"
+                 },
+                 new Student
+                 {
+                     Id = "12",
+                     UserName = "qasim@example.com",
+                     Email = "qasim@example.com",
+                     Name = "Qasim Khan",
+                     CourseName = "BSc Artificial Intelligence",
+                     AreaOfStudy = AreaOfStudy.Technology,
+                     UniversityId = 2,
+                     Role = UserRole.Mentor,
+                     PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                     PhoneNumber = "1234567890"
+                 },
+                 new Student
+                 {
+                     Id = "13",
+                     UserName = "minho@example.com",
+                     Email = "minho@example.com",
+                     Name = "Min-ho Lee",
+                     CourseName = "BSc Chemistry",
+                     AreaOfStudy = AreaOfStudy.Business,
+                     UniversityId = 2,
+                     Role = UserRole.Mentor,
+                     PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                     PhoneNumber = "1234567890"
+                 },
+                 new Student
+                 {
+                     Id = "14",
+                     UserName = "olga@example.com",
+                     Email = "olga@example.com",
+                     Name = "Olga Nowak",
+                     CourseName = "BA Printmaking",
+                     AreaOfStudy = AreaOfStudy.CreativeArts,
+                     UniversityId = 3,
+                     Role = UserRole.Mentor,
+                     PasswordHash = hasher.HashPassword(null, "temporarypass"),
+                     PhoneNumber = "1234567890"
+                 }
+                );
         }
     }
 }
