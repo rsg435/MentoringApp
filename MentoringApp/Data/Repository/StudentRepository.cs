@@ -1,6 +1,7 @@
 ﻿using MentoringApp.Data;
 using MentoringApp.Data.Models;
 using MentoringApp.Repository.IRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace MentoringApp.Repository
 {
@@ -12,24 +13,53 @@ namespace MentoringApp.Repository
             _context = context;
         }
 
-        public void AssignMentor(Student obj, int mentorId)
+        public void AssignMentor(string studentId, string mentorId)
         {
-            throw new NotImplementedException();
+            var student = _context.Students.FirstOrDefault(s => s.Id == studentId);
+            if(student != null)
+            {
+                student.MentorId = mentorId;
+            }
         }
 
-        public Student GetMentor(int studentId)
+        public Student GetStudent(string studentId)
         {
-            throw new NotImplementedException();
+            var student = _context.Students
+                .Where(s => s.Id == studentId)
+                .Include(s => s.University)
+                .ToList();
+            return student.First();
         }
 
-        public void GetMentors(University university, string AreaOfStudy)
+        public List<Student> GetMentors(int universityId, string AreaOfStudy)
         {
-            throw new NotImplementedException();
+            var mentors = _context.Students
+                .Where(s => s.UniversityId == universityId && s.AreaOfStudy == AreaOfStudy && s.Role == UserRole.Mentor)
+                .Include(s => s.University)
+                .ToList();
+            return mentors;
         }
 
-        public List<Student> GetStudents(int mentorId)
+        public Student? GetMentorForStudent(string studentId)
         {
-            throw new NotImplementedException();
+            var student = _context.Students
+                .FirstOrDefault(s => s.Id == studentId);
+            if(student != null)
+            {
+                return student.Mentor ?? null;
+            }
+            return null;
+        }
+
+        public List<Student>? GetMentees(string mentorId)
+        {
+            var mentor = _context.Students
+                .FirstOrDefault(s => s.Id == mentorId);
+            if(mentor != null)
+            {
+                return mentor.Mentees ?? null;
+            }
+            return null;
         }
     }
 }

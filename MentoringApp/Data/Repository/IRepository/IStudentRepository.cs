@@ -5,11 +5,12 @@ namespace MentoringApp.Repository.IRepository
     public interface IStudentRepository : IRepository<Student>
     {
         //Student
-        public void AssignMentor(Student obj, int mentorId);
-        public void GetMentors(University university, string AreaOfStudy);
-        public Student GetMentor(int studentId);
+        public void AssignMentor(string studentId, string mentorId);
+        public List<Student>? GetMentors(int universityId, string AreaOfStudy);
+        public Student GetStudent(string studentId);
 
         //Mentor
-        public List<Student> GetStudents(int mentorId);
+        public Student? GetMentorForStudent(string studentId);
+        public List<Student>? GetMentees(string mentorId);
     }
 }
