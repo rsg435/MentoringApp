@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MentoringApp.Repository
 {
-    public class StudentRepository : Repository<Student>, IStudentRepository
+	public class StudentRepository : Repository<Student>, IStudentRepository
     {
         private ApplicationDbContext _context;
         public StudentRepository(ApplicationDbContext context) : base(context)
@@ -61,5 +61,15 @@ namespace MentoringApp.Repository
             }
             return null;
         }
-    }
+
+		public bool HasMentor(string studentId)
+		{
+            var student = _context.Students.FirstOrDefault(s => s.Id == studentId);
+            if (!string.IsNullOrEmpty(student.MentorId))
+            {
+                return true;
+            }
+            return false;
+		}
+	}
 }

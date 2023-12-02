@@ -8,6 +8,7 @@ namespace MentoringApp.Repository.IRepository
         public void AssignMentor(string studentId, string mentorId);
         public List<Student>? GetMentors(int universityId, string AreaOfStudy);
         public Student GetStudent(string studentId);
+        public bool HasMentor(string studentId);
 
         //Mentor
         public Student? GetMentorForStudent(string studentId);

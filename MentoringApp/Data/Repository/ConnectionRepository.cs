@@ -1,6 +1,7 @@
 ﻿using MentoringApp.Data.Models;
 using MentoringApp.Repository;
 using MentoringApp.Repository.IRepository;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MentoringApp.Data.Repository
 {
@@ -11,25 +12,44 @@ namespace MentoringApp.Data.Repository
         {
             _context = context;
         }
-
-        public void AcceptRequest(string requesterId, string receiverId)
-        {
-            throw new NotImplementedException();
+		public void UpdateRequestStatus(int requestId, Status status)
+		{
+            var request = _context.ConnectionRequests.FirstOrDefault(r => r.Id == requestId);
+            if (request != null)
+            {
+                request.Status = status;
+            }
         }
 
-        public void GetConnectionStatus(string requesterId, string receiverId)
+		public List<ConnectionRequest> GetPendingRequests(string userId)
         {
-            throw new NotImplementedException();
+            var user = _context.Students.FirstOrDefault(s => s.Id == userId);
+            var requestList = new List<ConnectionRequest>();
+            if(user != null)
+            {
+				switch (user.Role)
+				{
+					case UserRole.Student:
+						requestList = user.SentConnectionRequests.Where(c => c.Status == Status.Pending).ToList();
+						break;
+
+					case UserRole.Mentor:
+						requestList = user.ReceivedConnectionRequests.Where(c => c.Status == Status.Pending).ToList();
+						break;
+				}
+			}
+            return requestList;
         }
 
-        public void GetPendingRequests(string userId)
+		public void SendRequest(string requesterId, string receiverId)
         {
-            throw new NotImplementedException();
-        }
-
-        public void SendRequest(string requesterId, string receiverId)
-        {
-            throw new NotImplementedException();
+            var request = new ConnectionRequest
+            {
+                StudentId = requesterId,
+                MentorId = receiverId,
+                Status = Status.Pending
+            };
+            _context.ConnectionRequests.Add(request);
         }
     }
 }
