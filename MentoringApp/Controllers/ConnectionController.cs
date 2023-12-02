@@ -1,10 +1,13 @@
-﻿using MentoringApp.Repository.IRepository;
+﻿using MentoringApp.Data.Models;
+using MentoringApp.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace MentoringApp.Controllers
 {
+    [Authorize]
     public class ConnectionController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -20,6 +23,27 @@ namespace MentoringApp.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult ConnectionRequests()
+        {
+            IEnumerable<ConnectionRequest> requests = _unitOfWork.Connection.GetPendingRequests(_currentUserId);
+            
+            return View(requests);
+		}
+
+        public IActionResult SendRequest(string receiverId)
+        {
+            if (_unitOfWork.Student.HasMentor(_currentUserId))
+            {
+                TempData["error"] = "The request was not sent because you already have a mentor.";
+            }
+            _unitOfWork.Connection.SendRequest(_currentUserId, receiverId);
+            _unitOfWork.Save();
+
+            TempData["success"] = "Request sent!";
+
+            return RedirectToAction(nameof(ConnectionRequests));
         }
     }
 }
