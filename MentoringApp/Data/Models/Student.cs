@@ -35,7 +35,9 @@ namespace MentoringApp.Data.Models
         public List<Student>? Mentees { get; set; }
         public List<ConnectionRequest> SentConnectionRequests { get; set; } = new List<ConnectionRequest>();
         public List<ConnectionRequest> ReceivedConnectionRequests { get; set; } = new List<ConnectionRequest>();
+        public byte[]? ProfilePicture { get; set; }
 
+        public string? IntroductionMessage { get; set; }
     }
 
     public enum UserRole
