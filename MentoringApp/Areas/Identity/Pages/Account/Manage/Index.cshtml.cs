@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using MentoringApp.Data.Migrations;
 using MentoringApp.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -64,19 +65,24 @@ namespace MentoringApp.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
-        }
+
+			[Display(Name = "Profile Picture")]
+			public byte[] ProfilePicture { get; set; }
+		}
 
         private async Task LoadAsync(Student user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+			var profilePicture = user.ProfilePicture;
 
-            Username = userName;
+			Username = userName;
 
             Input = new InputModel
             {
                 Name = user.Name,
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                ProfilePicture = profilePicture
             };
         }
 
@@ -121,7 +127,18 @@ namespace MentoringApp.Areas.Identity.Pages.Account.Manage
                 user.Name = Input.Name;
             }
 
-            await _signInManager.RefreshSignInAsync(user);
+			if (Request.Form.Files.Count > 0)
+			{
+				IFormFile file = Request.Form.Files.FirstOrDefault();
+				using (var dataStream = new MemoryStream())
+				{
+					await file.CopyToAsync(dataStream);
+					user.ProfilePicture = dataStream.ToArray();
+				}
+				await _userManager.UpdateAsync(user);
+			}
+
+			await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
         }
