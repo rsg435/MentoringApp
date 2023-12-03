@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MentoringApp.Data.Migrations
+namespace MentoringApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231130164356_UpdateMentorId")]
-    partial class UpdateMentorId
+    [Migration("20231203161520_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,14 +33,12 @@ namespace MentoringApp.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("MentorId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<string>("StudentId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -79,6 +77,9 @@ namespace MentoringApp.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("IntroductionMessage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -109,8 +110,8 @@ namespace MentoringApp.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -161,32 +162,6 @@ namespace MentoringApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Universities");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Sheffield",
-                            Name = "Sheffield Hallam University"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "Sheffield",
-                            Name = "The University of Sheffield"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            City = "Leeds",
-                            Name = "Leeds Beckett University"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            City = "Oxford",
-                            Name = "Oxford University"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -331,14 +306,12 @@ namespace MentoringApp.Data.Migrations
                     b.HasOne("MentoringApp.Data.Models.Student", "Mentor")
                         .WithMany("ReceivedConnectionRequests")
                         .HasForeignKey("MentorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("MentoringApp.Data.Models.Student", "Student")
                         .WithMany("SentConnectionRequests")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Mentor");
 

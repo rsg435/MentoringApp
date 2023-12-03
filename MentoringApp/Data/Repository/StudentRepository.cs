@@ -1,11 +1,13 @@
 ﻿using MentoringApp.Data;
+using MentoringApp.Data.DTOs;
+using MentoringApp.Data.Enums;
 using MentoringApp.Data.Models;
 using MentoringApp.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 namespace MentoringApp.Repository
 {
-	public class StudentRepository : Repository<Student>, IStudentRepository
+    public class StudentRepository : Repository<Student>, IStudentRepository
     {
         private ApplicationDbContext _context;
         public StudentRepository(ApplicationDbContext context) : base(context)
@@ -31,13 +33,27 @@ namespace MentoringApp.Repository
             return student.First();
         }
 
-        public List<Student> GetMentors(int universityId, string AreaOfStudy)
-        {
-            var mentors = _context.Students
-                .Where(s => s.UniversityId == universityId && s.AreaOfStudy == AreaOfStudy && s.Role == UserRole.Mentor)
-                .Include(s => s.University)
-                .ToList();
-            return mentors;
+        public List<StudentDto> GetMentors(int universityId, string AreaOfStudy)
+        { var mentors = (from student in _context.Students
+                         join userRole in _context.UserRoles
+                         on student.Id equals userRole.UserId
+                         join role in _context.Roles
+                         on userRole.RoleId equals role.Id
+                         where role.Name == Role.Mentor.ToString()
+                         && student.AreaOfStudy == AreaOfStudy
+                         && student.UniversityId == universityId
+                         select new StudentDto
+                         {
+                             Id = student.Id,
+                             Name = student.Name,
+                             CourseName = student.CourseName,
+                             AreaOfStudy = student.AreaOfStudy,
+                             Role = role.Name,
+                             University = student.University,
+                             ProfilePicture = student.ProfilePicture,
+                             IntroductionMessage = student.IntroductionMessage
+                         }).ToList();
+            return mentors;               
         }
 
         public Student GetMentorForStudent(string studentId)

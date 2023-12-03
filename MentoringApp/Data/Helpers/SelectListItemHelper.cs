@@ -21,6 +21,17 @@ namespace MentoringApp.Data.Helpers
 
             return areaOfStudyList;
         }
+
+        public static IEnumerable<SelectListItem> GetRolesSelectList()
+        {
+            var roles = new List<SelectListItem> 
+            {
+                new SelectListItem{Text = "Mentee", Value = "Student" },
+				new SelectListItem{Text = "Mentor", Value = "Mentor" },
+
+			};
+            return roles;
+        }
     }
 
     

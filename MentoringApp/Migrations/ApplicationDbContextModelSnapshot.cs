@@ -4,18 +4,16 @@ using MentoringApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MentoringApp.Data.Migrations
+namespace MentoringApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231130130755_UpdateModel")]
-    partial class UpdateModel
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,14 +31,12 @@ namespace MentoringApp.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("MentorId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<string>("StudentId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -50,6 +46,99 @@ namespace MentoringApp.Data.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("ConnectionRequests");
+                });
+
+            modelBuilder.Entity("MentoringApp.Data.Models.Student", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AreaOfStudy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CourseName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("IntroductionMessage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("MentorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("UniversityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MentorId");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("UniversityId");
+
+                    b.ToTable("AspNetUsers", (string)null);
                 });
 
             modelBuilder.Entity("MentoringApp.Data.Models.University", b =>
@@ -71,32 +160,6 @@ namespace MentoringApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Universities");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Sheffield",
-                            Name = "Sheffield Hallam University"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "Sheffield",
-                            Name = "The University of Sheffield"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            City = "Leeds",
-                            Name = "Leeds Beckett University"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            City = "Oxford",
-                            Name = "Oxford University"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -149,77 +212,6 @@ namespace MentoringApp.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -307,56 +299,39 @@ namespace MentoringApp.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("MentoringApp.Data.Models.Student", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("AreaOfStudy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CourseName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MentorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UniversityId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("MentorId");
-
-                    b.HasIndex("UniversityId");
-
-                    b.HasDiscriminator().HasValue("Student");
-                });
-
             modelBuilder.Entity("MentoringApp.Data.Models.ConnectionRequest", b =>
                 {
                     b.HasOne("MentoringApp.Data.Models.Student", "Mentor")
                         .WithMany("ReceivedConnectionRequests")
                         .HasForeignKey("MentorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("MentoringApp.Data.Models.Student", "Student")
                         .WithMany("SentConnectionRequests")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Mentor");
 
                     b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("MentoringApp.Data.Models.Student", b =>
+                {
+                    b.HasOne("MentoringApp.Data.Models.Student", "Mentor")
+                        .WithMany("Mentees")
+                        .HasForeignKey("MentorId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("MentoringApp.Data.Models.University", "University")
+                        .WithMany("Students")
+                        .HasForeignKey("UniversityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Mentor");
+
+                    b.Navigation("University");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -370,7 +345,7 @@ namespace MentoringApp.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("MentoringApp.Data.Models.Student", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -379,7 +354,7 @@ namespace MentoringApp.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("MentoringApp.Data.Models.Student", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -394,7 +369,7 @@ namespace MentoringApp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("MentoringApp.Data.Models.Student", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -403,35 +378,11 @@ namespace MentoringApp.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("MentoringApp.Data.Models.Student", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("MentoringApp.Data.Models.Student", b =>
-                {
-                    b.HasOne("MentoringApp.Data.Models.Student", "Mentor")
-                        .WithMany("Mentees")
-                        .HasForeignKey("MentorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("MentoringApp.Data.Models.University", "University")
-                        .WithMany("Students")
-                        .HasForeignKey("UniversityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Mentor");
-
-                    b.Navigation("University");
-                });
-
-            modelBuilder.Entity("MentoringApp.Data.Models.University", b =>
-                {
-                    b.Navigation("Students");
                 });
 
             modelBuilder.Entity("MentoringApp.Data.Models.Student", b =>
@@ -441,6 +392,11 @@ namespace MentoringApp.Data.Migrations
                     b.Navigation("ReceivedConnectionRequests");
 
                     b.Navigation("SentConnectionRequests");
+                });
+
+            modelBuilder.Entity("MentoringApp.Data.Models.University", b =>
+                {
+                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }

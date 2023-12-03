@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using MentoringApp.Data.Enums;
 using MentoringApp.Data.Helpers;
 using MentoringApp.Data.Models;
 using MentoringApp.Repository;
@@ -30,6 +31,7 @@ namespace MentoringApp.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<Student> _signInManager;
         private readonly UserManager<Student> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUserStore<Student> _userStore;
         private readonly IUserEmailStore<Student> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
@@ -39,6 +41,7 @@ namespace MentoringApp.Areas.Identity.Pages.Account
         public RegisterModel(
             UserManager<Student> userManager,
             IUserStore<Student> userStore,
+            RoleManager<IdentityRole> roleManager,
             SignInManager<Student> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
@@ -51,6 +54,7 @@ namespace MentoringApp.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _unitOfWork = unitOfWork;
+            _roleManager = roleManager;
         }
 
         /// <summary>
@@ -122,7 +126,7 @@ namespace MentoringApp.Areas.Identity.Pages.Account
             public string AreaOfStudy { get; set; }
 
             [Display(Name = "Role")]
-            public UserRole UserRole { get; set; }
+            public string Role { get; set; }
             public IEnumerable<SelectListItem> UniversityList { get; set; }
             public IEnumerable<SelectListItem> AreaOfStudyList { get; set; }
             public IEnumerable<SelectListItem> RoleList { get; set; }
@@ -152,7 +156,6 @@ namespace MentoringApp.Areas.Identity.Pages.Account
                 user.Name = Input.Name;
                 user.CourseName = Input.CourseName;
                 user.AreaOfStudy = Input.AreaOfStudy;
-                user.Role = Input.UserRole;
                 user.UniversityId = Input.UniversityId;
                 user.PhoneNumber = Input.PhoneNumber;
 
@@ -163,6 +166,15 @@ namespace MentoringApp.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    if (!String.IsNullOrEmpty(Input.Role))
+                    {
+                        await _userManager.AddToRoleAsync(user, Input.Role);
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, Data.Enums.Role.Student.ToString());
+                    }
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -207,7 +219,8 @@ namespace MentoringApp.Areas.Identity.Pages.Account
                     Text = i.Name,
                     Value = i.Id.ToString()
                 }),
-                AreaOfStudyList = SelectListItemHelper.GetAreaOfStudySelectList(),
+                RoleList = SelectListItemHelper.GetRolesSelectList(),
+                AreaOfStudyList = SelectListItemHelper.GetAreaOfStudySelectList()
             };
         }
 

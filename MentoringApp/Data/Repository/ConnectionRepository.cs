@@ -1,4 +1,5 @@
-﻿using MentoringApp.Data.Models;
+﻿using MentoringApp.Data.Enums;
+using MentoringApp.Data.Models;
 using MentoringApp.Repository;
 using MentoringApp.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
@@ -27,16 +28,16 @@ namespace MentoringApp.Data.Repository
             var requestList = new List<ConnectionRequest>();
             if(user != null)
             {
-				switch (user.Role)
-				{
-					case UserRole.Student:
-						requestList = user.SentConnectionRequests.Where(c => c.Status == Status.Pending).ToList();
-						break;
+				//switch (user.UserRole)
+				//{
+				//	case Role.Student:
+				//		requestList = user.SentConnectionRequests.Where(c => c.Status == Status.Pending).ToList();
+				//		break;
 
-					case UserRole.Mentor:
-						requestList = user.ReceivedConnectionRequests.Where(c => c.Status == Status.Pending).ToList();
-						break;
-				}
+				//	case Role.Mentor:
+				//		requestList = user.ReceivedConnectionRequests.Where(c => c.Status == Status.Pending).ToList();
+				//		break;
+				//}
 			}
             return requestList;
         }

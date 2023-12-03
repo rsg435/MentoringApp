@@ -59,11 +59,11 @@
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="Input.UserRole" class="form-label"></label>
-                    <select asp-for="Input.UserRole" asp-items="Html.GetEnumSelectList<MentoringApp.Data.Models.UserRole>()" class="form-select" required>
+                    <label asp-for="Input.Role" class="form-label"></label>
+                    <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select" required>
                         <option value="">- Select if you wish to be a mentor or a mentee -</option>
                     </select>
-                    <span asp-validation-for="Input.UserRole" class="text-danger"></span>
+                    <span asp-validation-for="Input.Role" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Input.PhoneNumber" class="form-label"></label>

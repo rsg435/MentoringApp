@@ -4,6 +4,7 @@ using MentoringApp.Repository.IRepository;
 using MentoringApp.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MentoringApp.Data.DbInitialiser;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,10 +15,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<Student>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>(); 
 //builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IDbInitialiser, DbInitialiser>();
 builder.Services.AddRazorPages()
     .AddMvcOptions(options =>
     {
@@ -47,10 +50,19 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
+SeedDatabase();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
 app.Run();
+
+void SeedDatabase()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+       var dbInitialiser = scope.ServiceProvider.GetRequiredService<IDbInitialiser>();
+        dbInitialiser.Initialise();
+    }
+}

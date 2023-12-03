@@ -1,4 +1,5 @@
-﻿using MentoringApp.Data.Models;
+﻿using MentoringApp.Data.DTOs;
+using MentoringApp.Data.Models;
 
 namespace MentoringApp.Repository.IRepository
 {
@@ -6,7 +7,7 @@ namespace MentoringApp.Repository.IRepository
     {
         //Student
         public void AssignMentor(string studentId, string mentorId);
-        public List<Student> GetMentors(int universityId, string AreaOfStudy);
+        public List<StudentDto> GetMentors(int universityId, string AreaOfStudy);
         public Student GetStudent(string studentId);
         public bool HasMentor(string studentId);
 

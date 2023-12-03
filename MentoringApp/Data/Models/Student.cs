@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using MentoringApp.Data.Enums;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace MentoringApp.Data.Models
@@ -25,25 +25,13 @@ namespace MentoringApp.Data.Models
 
         [Required]
         public University University { get; set; }
-
-        [Required(ErrorMessage = "Please select a role.")]
-        [EnumDataType(typeof(UserRole))]
-        public UserRole Role { get; set; }
-
         public string MentorId { get; set; }
         public Student Mentor { get; set; }
         public List<Student> Mentees { get; set; } = null;
         public List<ConnectionRequest> SentConnectionRequests { get; set; } = new List<ConnectionRequest>();
         public List<ConnectionRequest> ReceivedConnectionRequests { get; set; } = new List<ConnectionRequest>();
         public byte[] ProfilePicture { get; set; }
-
         public string IntroductionMessage { get; set; }
-    }
-
-    public enum UserRole
-    {
-        Student,
-        Mentor
     }
 
     public class AreaOfStudy
