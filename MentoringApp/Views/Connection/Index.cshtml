@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MentoringApp.Data.Models.ConnectionRequest>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Pending requests</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                Student Name
+            </th>
+            <th>
+                Student Course
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.CourseName)
+            </td>
+            <td>
+                <a asp-action="AcceptRequest" asp-route-id="@item.Id">Accept</a> |
+                <a asp-action="RejectRequest" asp-route-id="@item.Id">Reject</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

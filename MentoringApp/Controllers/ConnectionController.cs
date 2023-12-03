@@ -25,24 +25,11 @@ namespace MentoringApp.Controllers
 
         public IActionResult Index()
         {
-            var model = new StudentConnectionRequestModel();
             IEnumerable<ConnectionRequest> dbRequests = _unitOfWork.Connection.GetPendingRequests(_currentUserId);
-            foreach(var request in dbRequests)
-            {
-                var req = new StudentRequest
-                {
-                    StudentId = request.StudentId,
-                    MentorId = request.MentorId,
-                    RequestId = request.Id,
-                    StudentName = request.Student.Name,
-                    MentorName = request.Mentor.Name,
-                    RequestStatus = request.Status.ToString(),
-                };
-                model.Requests.Add(req);
-            }
-            return View(model);
+            return View(dbRequests);
 		}
 
+        [HttpPost]
         public IActionResult SendRequest(string receiverId)
         {
             if (_unitOfWork.Student.HasMentor(_currentUserId))
@@ -57,16 +44,24 @@ namespace MentoringApp.Controllers
             return RedirectToAction("Index", "Student", new { area = "" });
         }
 
-        public IActionResult UpdateRequest(StudentRequest request, Status status)
+		[HttpPost]
+		public IActionResult AcceptRequest(int requestId)
         {
-            _unitOfWork.Connection.UpdateRequestStatus(request.RequestId, status);
-            if(status == Status.Accepted)
-            {
-                _unitOfWork.Student.AssignMentor(request.StudentId, request.MentorId);
-            }
+            var req = _unitOfWork.Connection.Get(x => x.Id == requestId);
+            _unitOfWork.Connection.UpdateRequestStatus(requestId, Status.Accepted);
+            _unitOfWork.Student.AssignMentor(req.StudentId, req.MentorId);
             _unitOfWork.Save();
 
             return RedirectToAction(nameof(Index));
         }
-    }
+
+		public IActionResult RejectRequest(int requestId)
+		{
+			var req = _unitOfWork.Connection.Get(x => x.Id == requestId);
+			_unitOfWork.Connection.UpdateRequestStatus(requestId, Status.Rejected);
+			_unitOfWork.Save();
+
+			return RedirectToAction(nameof(Index));
+		}
+	}
 }

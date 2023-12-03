@@ -28,16 +28,7 @@ namespace MentoringApp.Data.Repository
             var requestList = new List<ConnectionRequest>();
             if(user != null)
             {
-				//switch (user.UserRole)
-				//{
-				//	case Role.Student:
-				//		requestList = user.SentConnectionRequests.Where(c => c.Status == Status.Pending).ToList();
-				//		break;
-
-				//	case Role.Mentor:
-				//		requestList = user.ReceivedConnectionRequests.Where(c => c.Status == Status.Pending).ToList();
-				//		break;
-				//}
+				requestList = user.ReceivedConnectionRequests.Where(c => c.Status == Status.Pending).ToList();
 			}
             return requestList;
         }

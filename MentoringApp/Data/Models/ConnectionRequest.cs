@@ -11,9 +11,9 @@ namespace MentoringApp.Data.Models
         [Required]
         public Status Status { get; set; }
 		public string StudentId { get; set; }
-        public Student Student { get; set; }
+        public virtual Student Student { get; set; }
         public string MentorId { get; set; }
-        public Student Mentor { get; set; }
+        public virtual Student Mentor { get; set; }
     }
     public enum Status
     {

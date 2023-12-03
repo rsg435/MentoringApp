@@ -24,12 +24,12 @@ namespace MentoringApp.Data.Models
         public int UniversityId { get; set; }
 
         [Required]
-        public University University { get; set; }
+        public virtual University University { get; set; }
         public string MentorId { get; set; }
-        public Student Mentor { get; set; }
-        public List<Student> Mentees { get; set; } = null;
-        public List<ConnectionRequest> SentConnectionRequests { get; set; } = new List<ConnectionRequest>();
-        public List<ConnectionRequest> ReceivedConnectionRequests { get; set; } = new List<ConnectionRequest>();
+        public virtual Student Mentor { get; set; }
+        public virtual List<Student> Mentees { get; set; } = null;
+        public virtual List<ConnectionRequest> SentConnectionRequests { get; set; } = new List<ConnectionRequest>();
+        public virtual List<ConnectionRequest> ReceivedConnectionRequests { get; set; } = new List<ConnectionRequest>();
         public byte[] ProfilePicture { get; set; }
         public string IntroductionMessage { get; set; }
     }

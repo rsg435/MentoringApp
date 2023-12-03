@@ -36,6 +36,9 @@
     </dl>
 </div>
 <div>
-@*     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> | *@
+    <form asp-controller="Connection" asp-action="SendRequest" method="post">
+    <input type="hidden" name="receiverId" value="@Model?.Id" />
+    <button type="submit">Request connection</button>
+    </form> |
     <a asp-action="Index">Back to List</a>
 </div>
