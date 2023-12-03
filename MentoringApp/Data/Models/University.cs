@@ -10,6 +10,6 @@ namespace MentoringApp.Data.Models
         public string Name { get; set; }
         [Required]
         public string City { get; set; }
-        public List<Student>? Students { get; set; }
+        public List<Student> Students { get; set; }
     }
 }

@@ -10,9 +10,9 @@ namespace MentoringApp.Data.Models
         public int Id { get; set; }
         [Required]
         public Status Status { get; set; }
-        public string? StudentId { get; set; }
+		public string StudentId { get; set; }
         public Student Student { get; set; }
-        public string? MentorId { get; set; }
+        public string MentorId { get; set; }
         public Student Mentor { get; set; }
     }
     public enum Status

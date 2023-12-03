@@ -40,7 +40,7 @@ namespace MentoringApp.Repository
             return mentors;
         }
 
-        public Student? GetMentorForStudent(string studentId)
+        public Student GetMentorForStudent(string studentId)
         {
             var student = _context.Students
                 .FirstOrDefault(s => s.Id == studentId);
@@ -51,7 +51,7 @@ namespace MentoringApp.Repository
             return null;
         }
 
-        public List<Student>? GetMentees(string mentorId)
+        public List<Student> GetMentees(string mentorId)
         {
             var mentor = _context.Students
                 .FirstOrDefault(s => s.Id == mentorId);

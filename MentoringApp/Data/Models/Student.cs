@@ -30,14 +30,14 @@ namespace MentoringApp.Data.Models
         [EnumDataType(typeof(UserRole))]
         public UserRole Role { get; set; }
 
-        public string? MentorId { get; set; }
-        public Student? Mentor { get; set; }
-        public List<Student>? Mentees { get; set; }
+        public string MentorId { get; set; }
+        public Student Mentor { get; set; }
+        public List<Student> Mentees { get; set; } = null;
         public List<ConnectionRequest> SentConnectionRequests { get; set; } = new List<ConnectionRequest>();
         public List<ConnectionRequest> ReceivedConnectionRequests { get; set; } = new List<ConnectionRequest>();
-        public byte[]? ProfilePicture { get; set; }
+        public byte[] ProfilePicture { get; set; }
 
-        public string? IntroductionMessage { get; set; }
+        public string IntroductionMessage { get; set; }
     }
 
     public enum UserRole
