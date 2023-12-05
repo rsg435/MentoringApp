@@ -1,8 +1,15 @@
-﻿@{
+﻿@using MentoringApp.Data.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Student> SignInManager
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome!</h1>
-    <p>Please sign in or create an account to get started.</p>
+    @if (!SignInManager.IsSignedIn(User))
+    {
+        <p>Please sign in or create an account to get started.</p>
+    }
 </div>

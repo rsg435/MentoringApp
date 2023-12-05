@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Mentor Profile</h1>
+<h1>User Profile</h1>
 
 <div>
     <hr />
@@ -37,7 +37,7 @@
 </div>
 <div>
     <form asp-controller="Connection" asp-action="SendRequest" method="post">
-    <input type="hidden" value="@Model?.Id" />
+    <input type="hidden" name="receiverId" value="@Model?.Id" />
     <button type="submit" class="btn btn-primary">Request connection</button>
     </form>
     <a asp-action="Index">Back to List</a>

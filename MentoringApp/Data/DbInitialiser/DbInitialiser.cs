@@ -230,7 +230,7 @@ namespace MentoringApp.Data.DbInitialiser
 					NormalizedEmail = "MINHO@EXAMPLE.COM",
 					NormalizedUserName = "MINHO@EXAMPLE.COM",
 					Name = "Min-ho Lee",
-					CourseName = "BSc Chemistry",
+					CourseName = "MSc Human Resources",
 					AreaOfStudy = AreaOfStudy.Business,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",

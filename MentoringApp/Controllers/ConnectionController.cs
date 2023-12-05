@@ -36,17 +36,19 @@ namespace MentoringApp.Controllers
             {
                 TempData["error"] = "The request was not sent because you already have a mentor.";
             }
-            if(_unitOfWork.Connection.RequestExists(_currentUserId, receiverId))
+            else if(_unitOfWork.Connection.RequestExists(_currentUserId, receiverId))
             {
                 TempData["error"] = "You have already sent a request to this mentor.";
             }
-            _unitOfWork.Connection.SendRequest(_currentUserId, receiverId);
-            _unitOfWork.Save();
+            else
+            {
+				_unitOfWork.Connection.SendRequest(_currentUserId, receiverId);
+				_unitOfWork.Save();
 
-            TempData["success"] = "Request sent!";
-
+				TempData["success"] = "Request sent!";
+			}
             return RedirectToAction("Index", "Student", new { area = "" });
-        }
+		}
 
 		[HttpPost]
 		public IActionResult AcceptRequest(int requestId)

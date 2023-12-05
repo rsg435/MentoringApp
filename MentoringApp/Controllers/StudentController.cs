@@ -1,5 +1,6 @@
 ﻿using MentoringApp.Data.DTOs;
 using MentoringApp.Data.Models;
+using MentoringApp.Data.Enums;
 using MentoringApp.Repository.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -36,5 +37,18 @@ namespace MentoringApp.Controllers
             var Student = _unitOfWork.Student.GetStudent(studentId);
             return View(Student);
         }
+
+        public IActionResult Contacts()
+        {
+            var users = new List<Student>();
+            if (User.IsInRole(Role.Student.ToString())){
+                users.Add(_unitOfWork.Student.GetMentorForStudent(_currentUserId));
+            }
+            else if (User.IsInRole(Role.Mentor.ToString()))
+            {
+                users.AddRange(_unitOfWork.Student.GetMentees(_currentUserId));
+            }
+            return View(users);
+		}
     }
 }

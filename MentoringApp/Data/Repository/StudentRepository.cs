@@ -59,8 +59,10 @@ namespace MentoringApp.Repository
         public Student GetMentorForStudent(string studentId)
         {
             var student = _context.Students
-                .FirstOrDefault(s => s.Id == studentId);
-            if(student != null)
+                .Where(s => s.Id == studentId)
+				.Include(s => s.Mentor)
+                .FirstOrDefault();
+			if (student != null)
             {
                 return student.Mentor ?? null;
             }

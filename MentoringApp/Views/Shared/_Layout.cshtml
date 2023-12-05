@@ -20,12 +20,25 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        @if(User.IsInRole(Role.Student.ToString()))
+                        {
+                            <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Index">Mentors</a>
-                        </li>
-                        <li class="nav-item">
+                            </li>
+                        }
+                        @if(User.IsInRole(Role.Mentor.ToString()))
+                        {
+                            <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Connection" asp-action="Index">Connection Requests</a>
-                        </li>
+                            </li>
+                        }
+                        @if(User.IsInRole(Role.Mentor.ToString()) || (User.IsInRole(Role.Student.ToString())))
+                        {
+                            <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Contacts">Contacts</a>
+                            </li>
+                        }
+                         
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

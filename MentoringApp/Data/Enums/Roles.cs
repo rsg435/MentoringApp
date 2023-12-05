@@ -3,6 +3,7 @@
     public enum Role
     {
         Student,
-        Mentor
+        Mentor,
+        Mentee
     }
 }
