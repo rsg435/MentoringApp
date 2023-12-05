@@ -3,11 +3,11 @@
 @{
     ViewData["Title"] = "Details";
 }
-
+</br></br>
 <h1>User Profile</h1>
-
+</br>
 <div>
-    <hr />
+
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
@@ -40,5 +40,6 @@
     <input type="hidden" name="receiverId" value="@Model?.Id" />
     <button type="submit" class="btn btn-primary">Request connection</button>
     </form>
+    <br>
     <a asp-action="Index">Back to List</a>
 </div>
