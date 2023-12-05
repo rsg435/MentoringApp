@@ -37,8 +37,8 @@
 </div>
 <div>
     <form asp-controller="Connection" asp-action="SendRequest" method="post">
-    <input type="hidden" name="receiverId" value="@Model?.Id" />
-    <button type="submit">Request connection</button>
-    </form> |
+    <input type="hidden" value="@Model?.Id" />
+    <button type="submit" class="btn btn-primary">Request connection</button>
+    </form>
     <a asp-action="Index">Back to List</a>
 </div>

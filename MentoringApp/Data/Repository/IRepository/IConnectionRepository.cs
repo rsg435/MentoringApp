@@ -7,5 +7,7 @@ namespace MentoringApp.Repository.IRepository
         void SendRequest(string requesterId, string receiverId);
         void UpdateRequestStatus(int requestId, Status status);
 		public List<ConnectionRequest> GetPendingRequests(string userId);
+
+        public bool RequestExists(string requesterId, string receiverId);
     }
 }

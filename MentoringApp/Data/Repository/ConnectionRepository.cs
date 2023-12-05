@@ -43,5 +43,10 @@ namespace MentoringApp.Data.Repository
             };
             _context.ConnectionRequests.Add(request);
         }
-    }
+
+		public bool RequestExists(string requesterId, string receiverId)
+		{
+            return _context.ConnectionRequests.Any(c => c.StudentId == requesterId && c.MentorId == receiverId);
+		}
+	}
 }
