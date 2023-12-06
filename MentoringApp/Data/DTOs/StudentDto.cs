@@ -16,7 +16,7 @@ namespace MentoringApp.Data.DTOs
 		public List<Student> Mentees { get; set; } = null;
 		public List<ConnectionRequest> SentConnectionRequests { get; set; } = new List<ConnectionRequest>();
 		public List<ConnectionRequest> ReceivedConnectionRequests { get; set; } = new List<ConnectionRequest>();
-		public byte[] ProfilePicture { get; set; }
+		public string ProfilePictureUrl { get; set; }
 		public string IntroductionMessage { get; set; }
 	}
 }

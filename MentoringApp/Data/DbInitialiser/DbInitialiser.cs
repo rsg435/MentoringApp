@@ -66,8 +66,9 @@ namespace MentoringApp.Data.DbInitialiser
 					AreaOfStudy = AreaOfStudy.Technology,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+					ProfilePictureUrl = "\\images\\user\\male-1.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
@@ -80,8 +81,9 @@ namespace MentoringApp.Data.DbInitialiser
 					AreaOfStudy = AreaOfStudy.Technology,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\male-2.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
@@ -94,8 +96,9 @@ namespace MentoringApp.Data.DbInitialiser
 					AreaOfStudy = AreaOfStudy.Technology,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\male-3.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
@@ -104,12 +107,13 @@ namespace MentoringApp.Data.DbInitialiser
 					NormalizedEmail = "PRIYANKA@EXAMPLE.COM",
 					NormalizedUserName = "PRIYANKA@EXAMPLE.COM",
 					Name = "Priyanka Chopra",
-					CourseName = "BA History",
-					AreaOfStudy = AreaOfStudy.ArtsAndHumanities,
+					CourseName = "BSc Computer Science For Games",
+					AreaOfStudy = AreaOfStudy.Technology,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\female-4.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
@@ -122,8 +126,9 @@ namespace MentoringApp.Data.DbInitialiser
 					AreaOfStudy = AreaOfStudy.ArtsAndHumanities,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\female-3.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
@@ -136,8 +141,9 @@ namespace MentoringApp.Data.DbInitialiser
 					AreaOfStudy = AreaOfStudy.Business,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\male-2.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
@@ -150,8 +156,9 @@ namespace MentoringApp.Data.DbInitialiser
 					AreaOfStudy = AreaOfStudy.Science,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\female-1.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
@@ -164,8 +171,9 @@ namespace MentoringApp.Data.DbInitialiser
 					AreaOfStudy = AreaOfStudy.Business,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\male-4.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
@@ -178,8 +186,9 @@ namespace MentoringApp.Data.DbInitialiser
 					AreaOfStudy = AreaOfStudy.Science,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\female-1.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
@@ -188,12 +197,13 @@ namespace MentoringApp.Data.DbInitialiser
 					NormalizedEmail = "BRUNO@EXAMPLE.COM",
 					NormalizedUserName = "BRUNO@EXAMPLE.COM",
 					Name = "Bruno Silva",
-					CourseName = "MSc IT Management",
-					AreaOfStudy = AreaOfStudy.Technology,
+					CourseName = "Medicine",
+					AreaOfStudy = AreaOfStudy.Health,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\male-3.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
@@ -202,12 +212,13 @@ namespace MentoringApp.Data.DbInitialiser
 					NormalizedEmail = "CLAIRE@EXAMPLE.COM",
 					NormalizedUserName = "CLAIRE@EXAMPLE.COM",
 					Name = "Claire Martin",
-					CourseName = "BSc Computer Science for Games",
-					AreaOfStudy = AreaOfStudy.Technology,
+					CourseName = "BA History",
+					AreaOfStudy = AreaOfStudy.ArtsAndHumanities,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\female-1.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
@@ -216,12 +227,13 @@ namespace MentoringApp.Data.DbInitialiser
 					NormalizedEmail = "QASIM@EXAMPLE.COM",
 					NormalizedUserName = "QASIM@EXAMPLE.COM",
 					Name = "Qasim Khan",
-					CourseName = "BSc Artificial Intelligence",
-					AreaOfStudy = AreaOfStudy.Technology,
+					CourseName = "Nursing",
+					AreaOfStudy = AreaOfStudy.Health,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\male-3.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
@@ -234,8 +246,9 @@ namespace MentoringApp.Data.DbInitialiser
 					AreaOfStudy = AreaOfStudy.Business,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\male-2.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
@@ -248,8 +261,9 @@ namespace MentoringApp.Data.DbInitialiser
 					AreaOfStudy = AreaOfStudy.CreativeArts,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
-					PhoneNumberConfirmed = true
-				}, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+					PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\female-3.png"
+                }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				var users = _context.Students.ToList();
 

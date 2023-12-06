@@ -50,7 +50,7 @@ namespace MentoringApp.Repository
                              AreaOfStudy = student.AreaOfStudy,
                              Role = role.Name,
                              University = student.University,
-                             ProfilePicture = student.ProfilePicture,
+                             ProfilePictureUrl = student.ProfilePictureUrl,
                              IntroductionMessage = student.IntroductionMessage
                          }).ToList();
             return mentors;               

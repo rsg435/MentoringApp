@@ -17,13 +17,16 @@ namespace MentoringApp.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<Student> _userManager;
         private readonly SignInManager<Student> _signInManager;
+		private readonly IWebHostEnvironment _hostEnvironment;
 
-        public IndexModel(
+		public IndexModel(
             UserManager<Student> userManager,
-            SignInManager<Student> signInManager)
+            SignInManager<Student> signInManager,
+			IWebHostEnvironment hostEnvironment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _hostEnvironment = hostEnvironment;
         }
 
         /// <summary>
@@ -66,14 +69,14 @@ namespace MentoringApp.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
 
 			[Display(Name = "Profile Picture")]
-			public byte[] ProfilePicture { get; set; }
+			public string ProfilePicture { get; set; }
 		}
 
         private async Task LoadAsync(Student user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-			var profilePicture = user.ProfilePicture;
+			var profilePicture = user.ProfilePictureUrl;
 
 			Username = userName;
 
@@ -111,7 +114,7 @@ namespace MentoringApp.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+			var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)
             {
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
@@ -126,18 +129,25 @@ namespace MentoringApp.Areas.Identity.Pages.Account.Manage
                 user.Name = Input.Name;
             }
 
-			if (Request.Form.Files.Count > 0)
-			{
+            if (Request.Form.Files.Count > 0)
+            {
+				string wwwRootPath = _hostEnvironment.WebRootPath;
 				IFormFile file = Request.Form.Files.FirstOrDefault();
-				using (var dataStream = new MemoryStream())
-				{
-					await file.CopyToAsync(dataStream);
-					user.ProfilePicture = dataStream.ToArray();
-				}
-				await _userManager.UpdateAsync(user);
-			}
 
-			await _signInManager.RefreshSignInAsync(user);
+                //Create the image URL
+                string fileName = Guid.NewGuid().ToString();
+                var uploads = Path.Combine(wwwRootPath, @"images\user");
+                var extension = Path.GetExtension(file.FileName);
+
+                using (var fileStream = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+                user.ProfilePictureUrl = @"\images\user\" + fileName + extension;
+                await _userManager.UpdateAsync(user);
+            }
+
+            await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
         }

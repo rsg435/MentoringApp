@@ -158,6 +158,7 @@ namespace MentoringApp.Areas.Identity.Pages.Account
                 user.AreaOfStudy = Input.AreaOfStudy;
                 user.UniversityId = Input.UniversityId;
                 user.PhoneNumber = Input.PhoneNumber;
+                user.ProfilePictureUrl = "/images/user/default.png";
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

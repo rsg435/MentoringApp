@@ -30,7 +30,7 @@ namespace MentoringApp.Data.Models
         public virtual List<Student> Mentees { get; set; } = null;
         public virtual List<ConnectionRequest> SentConnectionRequests { get; set; } = new List<ConnectionRequest>();
         public virtual List<ConnectionRequest> ReceivedConnectionRequests { get; set; } = new List<ConnectionRequest>();
-        public byte[] ProfilePicture { get; set; }
+        public string ProfilePictureUrl { get; set; }
         public string IntroductionMessage { get; set; }
     }
 
