@@ -4,56 +4,38 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="container p-3">
-    <div class="row pt-4">
-        <div class="col-6">
-            <h1>Pending Requests</h2>
-		</div>
-	</div>
-    <br /><br />
+<div class="row pb-3">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-6">
+            <div class="row p-2">
+                <div class="col-12 p-1" style="border:1px solid #008cba; border-radius: 5px; text-align: center;">
+                    <div class="card">
+                        <img src="@item.Student.ProfilePictureUrl" class="card-img-top rounded mx-auto" style="max-width: 247px; max-height: 304px; display: inline-block;" />
 
-<table class="table table-bordered table-striped" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-               @Html.DisplayNameFor(model => model.Status)
-			</th>
-            <th>
-                Student Name
-			</th>
-             <th>
-                Student Course
-			</th>
-            <th></th>
-		</tr>
-	</thead>
-    <tbody>
-        @foreach(var item in Model)
-        {
-            <tr>
-                <td width="50%">
-                     @Html.DisplayFor(modelItem => item.Status)
-				</td>
-                <td width="30%">
-                    @Html.DisplayFor(modelItem => item.Student.Name)
-				</td>
-                <td width="30%">
-                   @Html.DisplayFor(modelItem => item.Student.CourseName)
-				</td>
-                <td>
+                        <div class="card-body">
+                            <div class="pl-1">
+                                <p class="card-title h5 text-primary">@item.Student.Name</p>
+                            </div>
+                            <div class="pl-1">
+                                <p><b>@item.Student.CourseName</b></p>
+                            </div>
+                            <div class="pl-1">
+                                <p>Request Status: <b>@item.Status</b></p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="w-75 btn-group" role="group">
-                     <form asp-action="AcceptRequest" asp-route-requestId="@item.Id" method="post">
-                        <button type="submit"  class="btn btn-primary">Accept</button>
-                     </form>
+                        <form asp-action="AcceptRequest" asp-route-requestId="@item.Id" method="post">
+                            <button type="submit" class="btn btn-primary">Accept</button>
+                        </form>
 
-                     <form asp-action="RejectRequest" asp-route-requestId="@item.Id" method="post">
-                        <button type="submit" class="btn btn-danger">Reject</button>
-                    </form>
-					</div>
-				</td>
-			</tr>
-        }
-    </tbody>
-
-</table>
+                        <form asp-action="RejectRequest" asp-route-requestId="@item.Id" method="post">
+                            <button type="submit" class="btn btn-danger">Reject</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>

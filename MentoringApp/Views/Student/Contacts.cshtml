@@ -4,49 +4,37 @@
     ViewData["Title"] = "Contacts";
 }
 
-<div class="container p-3">
-    <div class="row pt-4">
-        <div class="col-6">
-            <h1>Contacts</h2>
-		</div>
-	</div>
-    <br /><br />
+<div class="row pb-3">
+    @foreach (var student in Model)
+    {
+        <div class="col-lg-3 col-md-6">
+            <div class="row p-2">
+                <div class="col-12 p-1" style="border:1px solid #008cba; border-radius: 5px; text-align: center;">
+                    <div class="card">
+                        <img src="@student.ProfilePictureUrl" class="card-img-top rounded mx-auto" style="max-width: 247px; max-height: 304px; display: inline-block;" />
 
-<table class="table table-bordered table-striped" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                Course Name
-            </th>
-            <th>
-                Phone Number
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CourseName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-        </tr>
-        }
-    </tbody>
-
-</table>
+                        <div class="card-body">
+                            <div class="pl-1">
+                                <p class="card-title h5 text-primary">@student.Name</p>
+                            </div>
+                            <div class="pl-1">
+                                <p><b>@student.CourseName</b></p>
+                            </div>
+                            <div class="pl-1">
+                                <p><b>@student.PhoneNumber</b></p>
+                            </div>
+                            <div class="pl-1">
+                                <p><b>@student.Email</b></p>
+                            </div>
+                        </div>
+                    </div>
+@*                     <div>
+                        <a asp-action="Details" class="btn btn-primary form-control" asp-route-studentId="@student.Id">
+                            Details
+                        </a>
+                    </div> *@
+                </div>
+            </div>
+        </div>
+    }
 </div>
