@@ -67,7 +67,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-					ProfilePictureUrl = "\\images\\user\\male-1.png"
+					ProfilePictureUrl = "\\images\\user\\male-1.png",
+					IntroductionMessage = "Hello! I can help you with studying and finding your way around. Please send me a request."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -82,7 +83,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\male-2.png"
+                    ProfilePictureUrl = "\\images\\user\\male-2.png",
+                    IntroductionMessage = "Hi. I'm a 3rd year Computer Science student, if you need any help with coding send me a connection request."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -97,7 +99,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\male-3.png"
+                    ProfilePictureUrl = "\\images\\user\\male-3.png",
+                    IntroductionMessage = "hi, happy to help out with anything you need"
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -112,7 +115,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\female-4.png"
+                    ProfilePictureUrl = "\\images\\user\\female-4.png",
+                    IntroductionMessage = "Friendly 2nd year student offering to be a mentor, as an international student myself I've been in your shoes."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -127,7 +131,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\female-3.png"
+                    ProfilePictureUrl = "\\images\\user\\female-3.png",
+                    IntroductionMessage = "I can help with: coursework, directions, budgeting, or just someone to talk to. Send me a request."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -142,7 +147,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\male-2.png"
+                    ProfilePictureUrl = "\\images\\user\\male-2.png",
+                    IntroductionMessage = "Friendly 2nd year student offering to be a mentor, as an international student myself I've been in your shoes."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -157,7 +163,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\female-1.png"
+                    ProfilePictureUrl = "\\images\\user\\female-1.png",
+                    IntroductionMessage = "hi, happy to help out with anything you need"
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -172,7 +179,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\male-4.png"
+                    ProfilePictureUrl = "\\images\\user\\male-4.png",
+                    IntroductionMessage = "hi, happy to help out with anything you need"
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -187,7 +195,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\female-1.png"
+                    ProfilePictureUrl = "\\images\\user\\female-1.png",
+                    IntroductionMessage = "Hello! I can help you with studying and finding your way around. Please send me a request."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -202,7 +211,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\male-3.png"
+                    ProfilePictureUrl = "\\images\\user\\male-3.png",
+                    IntroductionMessage = "hi, happy to help out with anything you need"
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -217,7 +227,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\female-1.png"
+                    ProfilePictureUrl = "\\images\\user\\female-1.png",
+                    IntroductionMessage = "Hello! I can help you with studying and finding your way around. Please send me a request."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -232,7 +243,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\male-3.png"
+                    ProfilePictureUrl = "\\images\\user\\male-3.png",
+                    IntroductionMessage = "Hello! I can help you with studying and finding your way around. Please send me a request."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -247,7 +259,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\male-2.png"
+                    ProfilePictureUrl = "\\images\\user\\male-2.png",
+                    IntroductionMessage = "Hello! I can help you with studying and finding your way around. Please send me a request."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -262,7 +275,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\female-3.png"
+                    ProfilePictureUrl = "\\images\\user\\female-3.png",
+                    IntroductionMessage = "I can help with: coursework, directions, budgeting, or just someone to talk to. Send me a request."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				var users = _context.Students.ToList();
