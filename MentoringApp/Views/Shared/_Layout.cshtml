@@ -13,7 +13,9 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MentoringApp</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src = "/images/globe.png" style="width:40px">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -47,12 +49,15 @@
         <main role="main" class="pb-3">
             <partial name="_Notification" />
             @RenderBody()
+            <div style="height:60px;"></div>
         </main>
     </div>
 
     <footer class="border-top footer text-muted mt-3">
         <div class="container">
-            &copy; 2023 - MentoringApp
+            &copy; 2023 - MentoringApp |
+            <a href="https://www.freepik.com/free-vector/multiracial-people-avatars_7085153.htm#query=avatar&position=11&from_view=search&track=sph&uuid=093b3578-7d8e-45a2-8505-5081135f2ca3">Student images by pikisuperstar</a> on Freepik |
+            <a href="https://www.flaticon.com/free-icons/universal" title="universal icons">Universal icons created by Freepik - Flaticon</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
