@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using MentoringApp.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MentoringApp.Areas.Identity.Pages.Account.Manage
@@ -68,15 +69,20 @@ namespace MentoringApp.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
 
-			[Display(Name = "Profile Picture")]
+			[Display(Name = "Profile picture")]
 			public string ProfilePicture { get; set; }
-		}
+
+            [ValidateNever]
+            [Display(Name = "Introduction message")]
+            public string Message { get; set; }
+        }
 
         private async Task LoadAsync(Student user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 			var profilePicture = user.ProfilePictureUrl;
+            var message = user.IntroductionMessage;
 
 			Username = userName;
 
@@ -84,7 +90,8 @@ namespace MentoringApp.Areas.Identity.Pages.Account.Manage
             {
                 Name = user.Name,
                 PhoneNumber = phoneNumber,
-                ProfilePicture = profilePicture
+                ProfilePicture = profilePicture,
+                Message = message
             };
         }
 
@@ -127,6 +134,13 @@ namespace MentoringApp.Areas.Identity.Pages.Account.Manage
             if (Input.Name != user.Name)
             {
                 user.Name = Input.Name;
+                await _userManager.UpdateAsync(user);
+            }
+
+            if(Input.Message != user.IntroductionMessage)
+            {
+                user.IntroductionMessage = Input.Message;
+                await _userManager.UpdateAsync(user);
             }
 
             if (Request.Form.Files.Count > 0)

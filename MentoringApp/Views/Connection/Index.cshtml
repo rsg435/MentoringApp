@@ -9,7 +9,7 @@
     {
         <div class="col-lg-3 col-md-6">
             <div class="row p-2">
-                <div class="col-12 p-1" style="border:1px solid #008cba; border-radius: 5px; text-align: center;">
+                <div class="col-12" style="border:1px solid #008cba; border-radius: 5px; text-align: center;">
                     <div class="card">
                         <img src="@item.Student.ProfilePictureUrl" class="card-img-top rounded mx-auto" style="max-width: 247px; max-height: 304px; display: inline-block;" />
 
@@ -22,6 +22,9 @@
                             </div>
                             <div class="pl-1">
                                 <p>Request Status: <b>@item.Status</b></p>
+                            </div>
+                            <div class="pl-1">
+                                <p>Message: <b>@item.Student.IntroductionMessage</b></p>
                             </div>
                         </div>
                     </div>

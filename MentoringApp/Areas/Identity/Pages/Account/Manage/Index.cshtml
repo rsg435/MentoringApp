@@ -23,6 +23,11 @@
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Input.Message"></label>
+                <textarea asp-for="Input.Message" rows="4" cols="50" maxlength="150" placeholder="Type a short message about yourself here." class="form-control"></textarea>
+                <span asp-validation-for="Input.Message" class="text-danger"></span>
+            </div>
             <br>
             <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
         </div>
