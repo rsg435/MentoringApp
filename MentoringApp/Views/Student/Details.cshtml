@@ -6,46 +6,51 @@
 </br></br>
 <h1>User Profile</h1>
 </br>
-<div>
+<div class="row">
+    <div class="col-md-3">
+        <img src="@Model.ProfilePictureUrl" style="width:250px;height:250px; object-fit:cover;" />
+    </div>
 
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CourseName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CourseName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AreaOfStudy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AreaOfStudy)
-        </dd>
-        <dt class = "col-sm-2">
-            University
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.University.Name)
-        </dd>
-        <dt class="col-sm-2">
-            Introduction Message
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IntroductionMessage)
-        </dd>
-    </dl>
-</div>
-<div>
-    <form asp-controller="Connection" asp-action="SendRequest" method="post">
-    <input type="hidden" name="receiverId" value="@Model?.Id" />
-    <button type="submit" class="btn btn-primary">Request connection</button>
-    </form>
-    <br>
-    <a asp-action="Index">Back to List</a>
+    <div class="col-md-8">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CourseName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CourseName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AreaOfStudy)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AreaOfStudy)
+            </dd>
+            <dt class="col-sm-2">
+                University
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.University.Name)
+            </dd>
+            <dt class="col-sm-2">
+                Introduction Message
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IntroductionMessage)
+            </dd>
+        </dl>
+        <div class="col-md-12 mt-3">
+            <form asp-controller="Connection" asp-action="SendRequest" method="post">
+                <input type="hidden" name="receiverId" value="@Model?.Id" />
+                <button type="submit" class="btn btn-primary">Request connection</button>
+            </form>
+            <br>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
 </div>
