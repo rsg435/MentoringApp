@@ -483,3 +483,5 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 /MentoringApp/appsettings.json
+/MentoringApp/appsettings.Development.json
+/MentoringApp/appsettings.UAT.json
