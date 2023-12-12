@@ -12,4 +12,12 @@
     {
         <p>Please sign in or create an account to get started.</p>
     }
+    else if (User.IsInRole(Role.Student.ToString()))
+    {
+        <p>Please click on the "Available Mentors" navigation link to find a mentor. If you already have a mentor, click on "Contacts" to get in touch with them.</p>
+    }
+    else if (User.IsInRole(Role.Mentor.ToString()))
+    {
+        <p>Please click on the "Pending Requests" navigation link to see new connection requests from mentees. Click on "Contacts" to get in touch with your existing mentees.</p>
+    }
 </div>

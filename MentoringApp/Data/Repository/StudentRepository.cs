@@ -40,7 +40,7 @@ namespace MentoringApp.Repository
                          join role in _context.Roles
                          on userRole.RoleId equals role.Id
                          where role.Name == Role.Mentor.ToString()
-                         && student.AreaOfStudy == AreaOfStudy
+                         && (string.IsNullOrEmpty(AreaOfStudy) || student.AreaOfStudy == AreaOfStudy)
                          && student.UniversityId == universityId
                          select new StudentDto
                          {
@@ -62,22 +62,14 @@ namespace MentoringApp.Repository
                 .Where(s => s.Id == studentId)
 				.Include(s => s.Mentor)
                 .FirstOrDefault();
-			if (student != null)
-            {
-                return student.Mentor ?? null;
-            }
-            return null;
+            return student.Mentor;
         }
 
         public List<Student> GetMentees(string mentorId)
         {
             var mentor = _context.Students
                 .FirstOrDefault(s => s.Id == mentorId);
-            if(mentor != null)
-            {
-                return mentor.Mentees ?? null;
-            }
-            return null;
+            return mentor.Mentees;
         }
 
 		public bool HasMentor(string studentId)
@@ -89,5 +81,5 @@ namespace MentoringApp.Repository
             }
             return false;
 		}
-	}
+    }
 }

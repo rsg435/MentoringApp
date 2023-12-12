@@ -26,6 +26,12 @@ namespace MentoringApp.Controllers
         public IActionResult Index()
         {
             IEnumerable<ConnectionRequest> dbRequests = _unitOfWork.Connection.GetPendingRequests(_currentUserId);
+            if (dbRequests.Count() < 1 || dbRequests == null)
+            {
+                var noResultsModel = new NoResultsViewModel();
+                noResultsModel.Message = "You don't have any pending requests at the moment.";
+                return View("NoResults", noResultsModel);
+            }
             return View(dbRequests);
 		}
 
@@ -57,6 +63,7 @@ namespace MentoringApp.Controllers
             _unitOfWork.Connection.UpdateRequestStatus(requestId, Status.Accepted);
             _unitOfWork.Student.AssignMentor(req.StudentId, req.MentorId);
             _unitOfWork.Save();
+            TempData["success"] = "Request accepted!";
 
             return RedirectToAction(nameof(Index));
         }
@@ -67,8 +74,9 @@ namespace MentoringApp.Controllers
 			var req = _unitOfWork.Connection.Get(x => x.Id == requestId);
 			_unitOfWork.Connection.UpdateRequestStatus(requestId, Status.Rejected);
 			_unitOfWork.Save();
+            TempData["error"] = "Request rejected.";
 
-			return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index));
 		}
 	}
 }
