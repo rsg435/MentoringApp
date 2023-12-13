@@ -38,6 +38,18 @@ namespace MentoringApp.Data
                 .WithMany(u => u.ReceivedConnectionRequests)
                 .HasForeignKey(cr => cr.MentorId)
                 .OnDelete(DeleteBehavior.Restrict);
-        }
+
+            modelBuilder.Entity<Notification>()
+                .HasOne(n => n.FromUser)
+                .WithMany(u => u.SentNotifications)
+                .HasForeignKey(n => n.FromUserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Notification>()
+				.HasOne(n => n.ToUser)
+				.WithMany(u => u.ReceivedNotifications)
+				.HasForeignKey(n => n.ToUserId)
+				.OnDelete(DeleteBehavior.Restrict);
+		}
     }
 }
