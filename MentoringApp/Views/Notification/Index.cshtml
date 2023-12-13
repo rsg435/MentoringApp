@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MentoringApp.Data.DTOs.NotificationDto>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>Notifications</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               From
+            </th>
+            <th>
+               To
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Message
+            </th>
+            <th>
+                Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotiHeader)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotiBody)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDateSt)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

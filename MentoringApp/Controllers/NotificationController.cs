@@ -23,15 +23,15 @@ namespace MentoringApp.Controllers
 		}
         public IActionResult Index()
 		{
-			return View();
+            var notifications = _unitOfWork.Notification.GetNotifications(_currentUserId, false);
+            return View(notifications);
 		}
 
-		public JsonResult GetNotifications(bool getOnlyUnread)
+		public JsonResult GetNotifications()
 		{
-			var notifications = new List<NotificationDto>();
-			notifications = _unitOfWork.Notification.GetNotifications(_currentUserId, getOnlyUnread);
-			return Json(notifications);
-			
+			var notifications = _unitOfWork.Notification.GetNotifications(_currentUserId, false);
+			var json = Json(notifications);
+			return json;
 		}
 	}
 }

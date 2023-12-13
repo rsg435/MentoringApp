@@ -38,12 +38,14 @@
                         @if(User.IsInRole(Role.Mentor.ToString()) || (User.IsInRole(Role.Student.ToString())))
                         {
                             <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Student" asp-action="Contacts">Contacts</a>
+                                <a class="nav-link" asp-area="" asp-controller="Notification" asp-action="Index">Notifications</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Student" asp-action="Contacts">Contacts</a>
                             </li>
                         }              
                       </ul>
                       <partial name="_LoginPartial" />
-                    <div id="noti_Container"></div>
                 </div>
             </div>
         </nav>
@@ -76,7 +78,7 @@
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "/Notifications/GetNotifications",
+            url: "/Notification/GetNotifications",
             traditional: true,
             contentType: "application/json;charset=utf-8",
             success: function (data) {
@@ -84,9 +86,9 @@
                 $("#noti_Container").ikrNotificationCount({
                     NotificationList: notifications,
                     NotiFromPropName: "FromName",
-                    ListTitlePropName: "Notification.NotiHeader",
-                    ListBodyPropName: "Notification.NotiBody",
-                    ControllerName: "Notifications",
+                    ListTitlePropName: "NotiHeader",
+                    ListBodyPropName: "NotiBody",
+                    ControllerName: "Notification",
                     ActionName: "Index"
                 });
             },

@@ -4,6 +4,7 @@ using MentoringApp.Models;
 using MentoringApp.Repository.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Plugins;
 using System.Security.Claims;
 
 namespace MentoringApp.Controllers
@@ -51,6 +52,17 @@ namespace MentoringApp.Controllers
 				_unitOfWork.Connection.SendRequest(_currentUserId, receiverId);
 				_unitOfWork.Save();
 
+                var notificationMentor = new Notification
+                {
+                    ToUserId = receiverId,
+                    FromUserId = _currentUserId,
+                    CreatedDate = DateTime.Now,
+                    NotiHeader = "New Connection Request",
+                    NotiBody = "You have received a new connection request. Please check your pending requests for more details.",
+                };
+                _unitOfWork.Notification.Add(notificationMentor);
+                _unitOfWork.Save();
+      
 				TempData["success"] = "Request sent!";
 			}
             return RedirectToAction("Index", "Student", new { area = "" });
@@ -65,6 +77,17 @@ namespace MentoringApp.Controllers
             _unitOfWork.Save();
             TempData["success"] = "Request accepted!";
 
+            var notificationStudent = new Notification
+            {
+                ToUserId = req.StudentId,
+                FromUserId = req.MentorId,
+                CreatedDate = DateTime.Now,
+                NotiHeader = "Connection Request Accepted",
+                NotiBody = "Your connection request was accepted! Please check Contacts to get in touch with your mentor",
+            };
+            _unitOfWork.Notification.Add(notificationStudent);
+            _unitOfWork.Save();
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -75,6 +98,17 @@ namespace MentoringApp.Controllers
 			_unitOfWork.Connection.UpdateRequestStatus(requestId, Status.Rejected);
 			_unitOfWork.Save();
             TempData["error"] = "Request rejected.";
+
+            var notificationStudent = new Notification
+            {
+                ToUserId = req.StudentId,
+                FromUserId = req.MentorId,
+                CreatedDate = DateTime.Now,
+                NotiHeader = "Connection Request Rejected",
+                NotiBody = "Sadly, your connection request was not accepted. The mentor may be too busy right now. Please try a different mentor.",
+            };
+            _unitOfWork.Notification.Add(notificationStudent);
+            _unitOfWork.Save();
 
             return RedirectToAction(nameof(Index));
 		}

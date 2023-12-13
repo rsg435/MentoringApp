@@ -3,10 +3,14 @@
 @inject SignInManager<Student> SignInManager
 @inject UserManager<Student> UserManager
 
+
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item" style="align-self: center;">
+    <li class="nav-item">
+            <div id="noti_Container" style="margin-top:10px; margin-right:10px; margin-bottom:10px"></div>
+    </li>
+    <li class="nav-item">
         @if (!String.IsNullOrEmpty(UserManager.GetUserAsync(User).Result.ProfilePictureUrl))
         {
             <img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="@(UserManager.GetUserAsync(User).Result.ProfilePictureUrl)">

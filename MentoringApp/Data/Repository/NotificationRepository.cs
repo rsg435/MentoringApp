@@ -23,7 +23,11 @@ namespace MentoringApp.Data.Repository
 				.Where(n => n.ToUserId == toUserId)
 				.Select(n => new NotificationDto
 				{
-					Notification = n,
+					CreatedDate = n.CreatedDate,
+					Url = n.Url,
+					IsRead = n.IsRead,
+					NotiHeader = n.NotiHeader,
+					NotiBody = n.NotiBody,
 					Message = n.NotiBody,
 					FromName = n.FromUser.Name,
 					ToName = n.ToUser.Name
@@ -36,11 +40,15 @@ namespace MentoringApp.Data.Repository
 			   .Where(n => n.ToUserId == toUserId && !n.IsRead)
 			   .Select(n => new NotificationDto
 			   {
-				   Notification = n,
-				   Message = n.NotiBody,
-				   FromName = n.FromUser.Name,
-				   ToName = n.ToUser.Name
-			   })
+                   CreatedDate = n.CreatedDate,
+                   Url = n.Url,
+                   IsRead = n.IsRead,
+                   NotiHeader = n.NotiHeader,
+                   NotiBody = n.NotiBody,
+                   Message = n.NotiBody,
+                   FromName = n.FromUser.Name,
+                   ToName = n.ToUser.Name
+               })
 			   .ToList();
 			}
 			 return notifications;
