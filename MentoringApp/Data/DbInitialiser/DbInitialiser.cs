@@ -68,13 +68,13 @@ namespace MentoringApp.Data.DbInitialiser
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
 					ProfilePictureUrl = "\\images\\user\\male-1.png",
-					IntroductionMessage = "Hello! I can help you with studying and finding your way around. Please send me a request."
+					IntroductionMessage = "Hi. I can help you with studying and finding your way around. Please send me a request."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
 				{
-					UserName = "jiang@example.com",
-					Email = "jiang@example.com",
+					UserName = "shuying@example.com",
+					Email = "shuying@example.com",
 					NormalizedEmail = "JIANG@EXAMPLE.COM",
 					NormalizedUserName = "JIANG@EXAMPLE.COM",
 					Name = "Shuying Jiang",
@@ -84,7 +84,7 @@ namespace MentoringApp.Data.DbInitialiser
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
                     ProfilePictureUrl = "\\images\\user\\male-2.png",
-                    IntroductionMessage = "Hi. I'm a 3rd year Computer Science student, if you need any help with coding send me a connection request."
+                    IntroductionMessage = "Hi. I'm a 3rd year Computer Science student, if you're struggling with coding send me a connection request."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -115,8 +115,8 @@ namespace MentoringApp.Data.DbInitialiser
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\female-4.png",
-                    IntroductionMessage = "Friendly 2nd year student offering to be a mentor, as an international student myself I've been in your shoes."
+                    ProfilePictureUrl = "\\images\\user\\female-2.png",
+                    IntroductionMessage = "Friendly 2nd year student offering to be a mentor, I am an international student from India. I love video games and technology."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -126,13 +126,13 @@ namespace MentoringApp.Data.DbInitialiser
 					NormalizedEmail = "ROBIN@EXAMPLE.COM",
 					NormalizedUserName = "ROBIN@EXAMPLE.COM",
 					Name = "Robin Hawthorn",
-					CourseName = "BA Politics",
-					AreaOfStudy = AreaOfStudy.ArtsAndHumanities,
+					CourseName = "BSc Data Science",
+					AreaOfStudy = AreaOfStudy.Technology,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
                     ProfilePictureUrl = "\\images\\user\\female-3.png",
-                    IntroductionMessage = "I can help with: coursework, directions, budgeting, or just someone to talk to. Send me a request."
+                    IntroductionMessage = "I can help with: coursework, directions, budgeting, or just someone to talk to."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -169,13 +169,13 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
-					UserName = "john@example.com",
-					Email = "john@example.com",
-					NormalizedEmail = "JOHN@EXAMPLE.COM",
-					NormalizedUserName = "JOHN@EXAMPLE.COM",
-					Name = "John Doe",
-					CourseName = "MSc Business Analytics",
-					AreaOfStudy = AreaOfStudy.Business,
+					UserName = "sven@example.com",
+					Email = "sven@example.com",
+					NormalizedEmail = "SVEN@EXAMPLE.COM",
+					NormalizedUserName = "SVEN@EXAMPLE.COM",
+					Name = "Sven Erikson",
+					CourseName = "MSc Data Science",
+					AreaOfStudy = AreaOfStudy.Technology,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
@@ -185,18 +185,18 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
-					UserName = "emily@example.com",
-					Email = "emily@example.com",
-					NormalizedEmail = "EMILY@EXAMPLE.COM",
-					NormalizedUserName = "EMILY@EXAMPLE.COM",
-					Name = "Emily White",
-					CourseName = "BSc Chemistry",
-					AreaOfStudy = AreaOfStudy.Science,
+					UserName = "adenike@example.com",
+					Email = "adenike@example.com",
+					NormalizedEmail = "ADENIKE@EXAMPLE.COM",
+					NormalizedUserName = "ADENIKE@EXAMPLE.COM",
+					Name = "Adenike Oyetunde",
+					CourseName = "MSc Advanced Computer Science",
+					AreaOfStudy = AreaOfStudy.Technology,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\female-1.png",
-                    IntroductionMessage = "Hello! I can help you with studying and finding your way around. Please send me a request."
+                    ProfilePictureUrl = "\\images\\user\\female-2.png",
+                    IntroductionMessage = "I am a masters student from Nigeria. Please send me a request, we can help each other."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -218,17 +218,17 @@ namespace MentoringApp.Data.DbInitialiser
 				_userManager.CreateAsync(new Student
 				{
 					UserName = "claire@example.com",
-					Email = "emily@example.com",
+					Email = "claire@example.com",
 					NormalizedEmail = "CLAIRE@EXAMPLE.COM",
 					NormalizedUserName = "CLAIRE@EXAMPLE.COM",
 					Name = "Claire Martin",
-					CourseName = "BA History",
-					AreaOfStudy = AreaOfStudy.ArtsAndHumanities,
+					CourseName = "BSc Information Technology",
+					AreaOfStudy = AreaOfStudy.Technology,
 					UniversityId = 1,
 					PhoneNumber = "1234567890",
 					PhoneNumberConfirmed = true,
-                    ProfilePictureUrl = "\\images\\user\\female-1.png",
-                    IntroductionMessage = "Hello! I can help you with studying and finding your way around. Please send me a request."
+                    ProfilePictureUrl = "\\images\\user\\female-4.png",
+                    IntroductionMessage = "Hi. I can help you with studying and finding your way around. Please send me a request."
                 }, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
 
 				_userManager.CreateAsync(new Student
@@ -285,7 +285,26 @@ namespace MentoringApp.Data.DbInitialiser
 				{
 					_userManager.AddToRoleAsync(user, Enums.Role.Mentor.ToString()).GetAwaiter().GetResult();
 				}
-			}
+
+                //create student
+                var mentee = new Student
+                {
+                    UserName = "user@example.com",
+                    Email = "user@example.com",
+                    NormalizedUserName = "USER@EXAMPLE.COM",
+                    NormalizedEmail = "USER@EXAMPLE.COM",
+                    Name = "Example User",
+                    CourseName = "MSc Computing",
+                    AreaOfStudy = AreaOfStudy.Technology,
+                    UniversityId = 1,
+                    PhoneNumber = "1234567890",
+                    PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\default.png",
+                    IntroductionMessage = "I'm looking for someone to help me with studying."
+                };
+				_userManager.CreateAsync(mentee, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+                _userManager.AddToRoleAsync(mentee, Enums.Role.Student.ToString()).GetAwaiter().GetResult();
+            }
 			return;
 			
 		}
