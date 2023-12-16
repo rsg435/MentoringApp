@@ -57,6 +57,7 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
+					Id = "1",
 					UserName = "harry@example.com",
 					Email = "harry@example.com",
 					NormalizedUserName = "HARRY@EXAMPLE.COM",
@@ -73,7 +74,8 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
-					UserName = "shuying@example.com",
+                    Id = "2",
+                    UserName = "shuying@example.com",
 					Email = "shuying@example.com",
 					NormalizedEmail = "JIANG@EXAMPLE.COM",
 					NormalizedUserName = "JIANG@EXAMPLE.COM",
@@ -89,6 +91,7 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
+					Id = "3",
 					UserName = "hakeem@example.com",
 					Email = "hakeem@example.com",
 					NormalizedEmail = "HAKEEM@EXAMPLE.COM",
@@ -105,6 +108,7 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
+					Id = "4",
 					UserName = "priyanka@example.com",
 					Email = "priyanka@example.com",
 					NormalizedEmail = "PRIYANKA@EXAMPLE.COM",
@@ -121,6 +125,7 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
+					Id = "5",
 					UserName = "robin@example.com",
 					Email = "robin@example.com",
 					NormalizedEmail = "ROBIN@EXAMPLE.COM",
@@ -137,6 +142,7 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
+					Id = "6",
 					UserName = "jun@example.com",
 					Email = "jun@example.com",
 					NormalizedEmail = "JUN@EXAMPLE.COM",
@@ -153,6 +159,7 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
+					Id = "7",
 					UserName = "maria@example.com",
 					Email = "maria@example.com",
 					NormalizedEmail = "MARIA@EXAMPLE.COM",
@@ -169,7 +176,8 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
-					UserName = "sven@example.com",
+                    Id = "8",
+                    UserName = "sven@example.com",
 					Email = "sven@example.com",
 					NormalizedEmail = "SVEN@EXAMPLE.COM",
 					NormalizedUserName = "SVEN@EXAMPLE.COM",
@@ -185,7 +193,8 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
-					UserName = "adenike@example.com",
+                    Id = "9",
+                    UserName = "adenike@example.com",
 					Email = "adenike@example.com",
 					NormalizedEmail = "ADENIKE@EXAMPLE.COM",
 					NormalizedUserName = "ADENIKE@EXAMPLE.COM",
@@ -201,6 +210,7 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
+					Id = "10",
 					UserName = "bruno@example.com",
 					Email = "bruno@example.com",
 					NormalizedEmail = "BRUNO@EXAMPLE.COM",
@@ -217,6 +227,7 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
+					Id = "11",
 					UserName = "claire@example.com",
 					Email = "claire@example.com",
 					NormalizedEmail = "CLAIRE@EXAMPLE.COM",
@@ -233,7 +244,8 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
-					UserName = "qasim@example.com",
+                    Id = "12",
+                    UserName = "qasim@example.com",
 					Email = "qasim@example.com",
 					NormalizedEmail = "QASIM@EXAMPLE.COM",
 					NormalizedUserName = "QASIM@EXAMPLE.COM",
@@ -249,7 +261,8 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
-					UserName = "minho@example.com",
+                    Id = "13",
+                    UserName = "minho@example.com",
 					Email = "minho@example.com",
 					NormalizedEmail = "MINHO@EXAMPLE.COM",
 					NormalizedUserName = "MINHO@EXAMPLE.COM",
@@ -265,7 +278,8 @@ namespace MentoringApp.Data.DbInitialiser
 
 				_userManager.CreateAsync(new Student
 				{
-					UserName = "olga@example.com",
+                    Id = "14",
+                    UserName = "olga@example.com",
 					Email = "olga@example.com",
 					NormalizedEmail = "OLGA@EXAMPLE.COM",
 					NormalizedUserName = "OLGA@EXAMPLE.COM",
@@ -289,6 +303,7 @@ namespace MentoringApp.Data.DbInitialiser
                 //create student
                 var mentee = new Student
                 {
+                    Id = "15",
                     UserName = "user@example.com",
                     Email = "user@example.com",
                     NormalizedUserName = "USER@EXAMPLE.COM",
@@ -297,15 +312,85 @@ namespace MentoringApp.Data.DbInitialiser
                     CourseName = "MSc Computing",
                     AreaOfStudy = AreaOfStudy.Technology,
                     UniversityId = 1,
+					MentorId = "3",
                     PhoneNumber = "1234567890",
                     PhoneNumberConfirmed = true,
                     ProfilePictureUrl = "\\images\\user\\default.png",
                     IntroductionMessage = "I'm looking for someone to help me with studying."
                 };
-				_userManager.CreateAsync(mentee, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
+                var mentee2 = new Student
+                {
+                    Id = "16",
+                    UserName = "ahmed@example.com",
+                    Email = "ahmed@example.com",
+                    NormalizedUserName = "AHMED@EXAMPLE.COM",
+                    NormalizedEmail = "AHMED@EXAMPLE.COM",
+                    Name = "Ahmed Rezai",
+                    CourseName = "MSc Computing",
+                    AreaOfStudy = AreaOfStudy.Technology,
+                    UniversityId = 1,
+                    PhoneNumber = "1234567890",
+                    PhoneNumberConfirmed = true,
+                    ProfilePictureUrl = "\\images\\user\\male-2.png",
+                    IntroductionMessage = "I'm looking for someone to help me with studying, please connect with me."
+                };
+                _userManager.CreateAsync(mentee, "X32G#ILcWi^d5^P!").GetAwaiter().GetResult();
                 _userManager.AddToRoleAsync(mentee, Enums.Role.Student.ToString()).GetAwaiter().GetResult();
+
+                _userManager.CreateAsync(mentee2, "X32G#ILcWi^d5^P?").GetAwaiter().GetResult();
+                _userManager.AddToRoleAsync(mentee2, Enums.Role.Student.ToString()).GetAwaiter().GetResult();
             }
-			return;
+
+			//create request
+            if (!_context.ConnectionRequests.Any(x => x.StudentId == "16"))
+            {
+                var req = new ConnectionRequest
+                {
+                    Status = Status.Pending,
+					StudentId = "16",
+					MentorId = "3"
+                };
+                _context.ConnectionRequests.Add(req);
+                _context.SaveChanges();
+            }
+
+            //create notifications
+            if (!_context.Notifications.Any(x => x.FromUserId == "3"))
+            {
+                var noti = new Notification
+                {
+                    FromUserId = "3",
+					ToUserId = "15",
+					NotiHeader = "Connection request sent!",
+					NotiBody = "Thanks for sending a connection request, the mentor will get back to you soon.",
+					CreatedDate = DateTime.Now.AddDays(-2)
+					
+                };
+                var noti2 = new Notification
+                {
+                    FromUserId = "3",
+                    ToUserId = "15",
+                    NotiHeader = "Connection request accepted!",
+                    NotiBody = "Your connection request was accepted! Your new mentor has been added to Contacts.",
+                    CreatedDate = DateTime.Now.AddDays(-1)
+
+                };
+                var noti3 = new Notification
+                {
+                    FromUserId = "16",
+                    ToUserId = "3",
+                    NotiHeader = "New connection request.",
+                    NotiBody = "I'm looking for someone to help me with studying, please connect with me.",
+                    CreatedDate = DateTime.Now.AddDays(-1)
+
+                };
+                _context.Notifications.Add(noti);
+                _context.Notifications.Add(noti2);
+                _context.Notifications.Add(noti3);
+                _context.SaveChanges();
+            }
+
+            return;
 			
 		}
 	}
