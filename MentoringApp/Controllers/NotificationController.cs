@@ -1,4 +1,5 @@
 ﻿using MentoringApp.Data.DTOs;
+using MentoringApp.Models;
 using MentoringApp.Repository;
 using MentoringApp.Repository.IRepository;
 using Microsoft.AspNetCore.Authorization;
@@ -24,6 +25,12 @@ namespace MentoringApp.Controllers
         public IActionResult Index()
 		{
             var notifications = _unitOfWork.Notification.GetNotifications(_currentUserId, false);
+            if (notifications.Count() < 1 || notifications == null)
+            {
+                var noResultsModel = new NoResultsViewModel();
+                noResultsModel.Message = "You don't have any notifications at the moment.";
+                return View("NoResults", noResultsModel);
+            }
             return View(notifications);
 		}
 
